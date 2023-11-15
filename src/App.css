@@ -9,7 +9,7 @@
 
 /* Left sidebar */
 .left-sidebar {
-  width: 20%; /* 20% of the container's width */
+  min-width: 20%; /* 20% of the container's width */
   background-color: #f0f0f0; /* Example background color */
   padding: 20px;
   box-sizing: border-box;
@@ -66,6 +66,8 @@
   background-color: #c0c0c0; /* Example background color */
   padding: 10px;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
   /* Additional styling for the labels */
 }
 .right-sidebar {
@@ -92,6 +94,21 @@
   background-color: #ff341b; /* Example button color on hover */
 }
 .panel {
+  display: none;
+  position: absolute;
+  top: 20vh;
+  left: 75vh;
+  width: 30%; /* Adjust the width as needed */
+  height: 50%; /* Cover the entire height of the container */
+  background-color: rgba(
+    113,
+    112,
+    121,
+    0.992
+  ); /* Semi-transparent background for the panel */
+  z-index: 1; /* Make the panel appear in front of other elements */
+}
+.panel.show {
   display: block;
   position: absolute;
   top: 20vh;
