@@ -1,38 +1,108 @@
-.App {
-  text-align: center;
+/* YourComponent.css */
+
+/* Container for the entire layout */
+.container {
+  display: flex;
+  height: 100vh; /* 100% viewport height */
+  position: relative; /* Create a positioning context */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Left sidebar */
+.left-sidebar {
+  width: 20%; /* 20% of the container's width */
+  background-color: #f0f0f0; /* Example background color */
+  padding: 20px;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
+}
+
+/* Title */
+.title {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Buttons */
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Main content area (with or without left sidebar) */
+
+.main-content {
+  flex-grow: 1; /* Allow this area to grow and fill remaining space */
+  padding: 2px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Upper container */
+.upper-container {
+  background-color: #e0e0e0; /* Example background color */
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  height: 10vh;
+  justify-content: space-between;
+}
+
+/* Middle container (CSS Grid for columns) */
+
+.middle-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Three columns */
+  grid-template-rows: 35px;
+  flex: 1;
+  height: 90vh;
+}
+
+/* Individual columns within the middle container */
+.column {
+  background-color: #c0c0c0; /* Example background color */
+  padding: 10px;
+  box-sizing: border-box;
+  /* Additional styling for the labels */
+}
+.right-sidebar {
+  background-color: #c0c0c0; /* Example background color */
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  /* Additional styling for the labels */
+}
+
+/* Optional: Style for the "Remove Left Sidebar" button */
+.container button {
+  margin-top: 10px;
+  background-color: #ff5733; /* Example button color */
   color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+.container button:hover {
+  background-color: #ff341b; /* Example button color on hover */
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.panel {
+  display: block;
+  position: absolute;
+  top: 20vh;
+  left: 75vh;
+  width: 30%; /* Adjust the width as needed */
+  height: 50%; /* Cover the entire height of the container */
+  background-color: rgba(
+    113,
+    112,
+    121,
+    0.992
+  ); /* Semi-transparent background for the panel */
+  z-index: 1; /* Make the panel appear in front of other elements */
 }

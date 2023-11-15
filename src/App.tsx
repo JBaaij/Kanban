@@ -1,45 +1,57 @@
-// import React from "react";
-// import logo from "./logo.svg";
+import React from "react";
 import { useState } from "react";
 import "./App.css";
-import React from "react";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [showLeftSidebar, setShowLeftSidebar] = useState(true);
 
-  // Function to increment the count
-  const incrementCount = () => {
-    setCount(count + 1);
-  };
-
-  // Function to decrement the count
-  const decrementCount = () => {
-    setCount(count - 1);
+  const toggleLeftSidebar = () => {
+    setShowLeftSidebar(!showLeftSidebar);
   };
 
   return (
-    <div>
-      <p>Count: {count}</p>
-      <button onClick={incrementCount}>Increment</button>
-      <button onClick={decrementCount}>Decrement</button>
+    <div className="container">
+      {showLeftSidebar && (
+        <div className="left-sidebar">
+          {/* Title and buttons */}
+          <div className="title">Title</div>
+          <div className="buttons">
+            <button>Button 1</button>
+            <button>Button 2</button>
+            {/* Add more buttons as needed */}
+          </div>
+          <button onClick={toggleLeftSidebar}>Remove Left Sidebar</button>
+        </div>
+      )}
+
+      <div className="main-content">
+        {/* Upper container */}
+        <div>
+          <div className="upper-container">
+            <span>Name Board</span>
+            <button>Button 3</button>
+          </div>
+          {/* Middle container with 3 columns */}
+          <div className="middle-container">
+            {/* 3 columns */}
+            <div className="column">todo</div>
+            <div className="column">doing</div>
+            <div className="column">done</div>
+            <div className="right-sidebar">
+              <div></div>
+            </div>
+            <div className="column">Label 1</div>
+            <div className="column">Label 2</div>
+            <div className="column">Label 3</div>
+            <div className="right-sidebar">
+              <button>Button 4</button>
+            </div>
+            <div className="panel">Panel</div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
 
 export default App;
-
-/* <header className="App-header">
-<img src={logo} className="App-logo" alt="logo" />
-<p>
-  Edit <code>src/App.tsx</code> and save to reload.
-</p>
-<a
-  className="App-link"
-  href="https://reactjs.org"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  Learn React
-</a>
-</header>
-*/
