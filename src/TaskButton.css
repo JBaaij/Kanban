@@ -2,8 +2,17 @@
   user-select: none;
   cursor: pointer;
   display: inline-block;
-  padding: 5px;
-  border: 1px solid;
+
   border-radius: 10px;
-  background-color: #61dafb;
+  background-color: #5c585848;
+  color: white;
+  font-weight: bold;
+  padding: 15px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+}
+.subtaskStyle {
+  font-size: 13px;
+  color: lightgray;
+  margin-top: 5px;
 }

@@ -4,16 +4,31 @@ import "./App.css";
 import jsonData from "../src/data.json";
 import LabelButton from "./LabelButton";
 import TaskButton from "./TaskButton";
+import ViewTaskPanel from "./ViewTaskPanel";
 function App() {
   const [showLeftSidebar, setShowLeftSidebar] = useState(true);
-  const [showPanel, setShowPanel] = useState(false);
+  const [showCreatePanel, setShowCreatePanel] = useState(false);
+  const [showTaskPanel, setShowTaskPanel] = useState(false);
   const [boardName, setBoardName] = useState("Platform Launch");
   const [boardNumber, setBoardNumber] = useState(0);
+  const [taskTitle, setTaskTitle] = useState("");
+  const [taskDescription, setTaskDescription] = useState("");
+  const [subtasks, setSubtasks] = useState<
+    { title: string; isCompleted: boolean }[]
+  >([]);
+  const [countSubTask, setCountSubTask] = useState("");
+  const [statusName, setStatusName] = useState("");
+
+  // ...
+
   const toggleLeftSidebar = () => {
     setShowLeftSidebar(!showLeftSidebar);
   };
-  const togglePanel = () => {
-    setShowPanel(!showPanel);
+  const toggleCreatePanel = () => {
+    setShowCreatePanel(!showCreatePanel);
+  };
+  const toggleTaskPanel = () => {
+    setShowTaskPanel(!showTaskPanel);
   };
 
   return (
@@ -53,7 +68,7 @@ function App() {
         <div>
           <div className="upper-container">
             <span>{boardName}</span>
-            <button onClick={togglePanel}>Open/Close Panel</button>
+            <button onClick={toggleCreatePanel}>Open/Close Panel</button>
           </div>
           {/* Middle container with 3 columns */}
           <div className="middle-container">
@@ -75,6 +90,20 @@ function App() {
                         .length
                     } of ${task.subtasks.length} subtasks`}
                     onClick={() => {
+                      toggleTaskPanel();
+                      setTaskTitle(task.title);
+                      setTaskDescription(task.description);
+                      setSubtasks([...task.subtasks]);
+                      setStatusName(
+                        jsonData.boards[boardNumber].columns[0].name
+                      );
+                      setCountSubTask(
+                        `subtasks (${
+                          task.subtasks.filter((subtask) => subtask.isCompleted)
+                            .length
+                        } of ${task.subtasks.length}) `
+                      );
+
                       // Add your button click logic here
                     }}
                   />
@@ -92,6 +121,19 @@ function App() {
                         .length
                     } of ${task.subtasks.length} subtasks`}
                     onClick={() => {
+                      toggleTaskPanel();
+                      setTaskTitle(task.title);
+                      setTaskDescription(task.description);
+                      setSubtasks([...task.subtasks]);
+                      setStatusName(
+                        jsonData.boards[boardNumber].columns[1].name
+                      );
+                      setCountSubTask(
+                        `subtasks (${
+                          task.subtasks.filter((subtask) => subtask.isCompleted)
+                            .length
+                        } of ${task.subtasks.length}) `
+                      );
                       // Add your button click logic here
                     }}
                   />
@@ -109,6 +151,19 @@ function App() {
                         .length
                     } of ${task.subtasks.length} subtasks`}
                     onClick={() => {
+                      toggleTaskPanel();
+                      setTaskTitle(task.title);
+                      setTaskDescription(task.description);
+                      setSubtasks([...task.subtasks]);
+                      setStatusName(
+                        jsonData.boards[boardNumber].columns[2].name
+                      );
+                      setCountSubTask(
+                        `subtasks (${
+                          task.subtasks.filter((subtask) => subtask.isCompleted)
+                            .length
+                        } of ${task.subtasks.length}) `
+                      );
                       // Add your button click logic here
                     }}
                   />
@@ -118,7 +173,26 @@ function App() {
             <div className="right-sidebar">
               <button>Button 4</button>
             </div>
-            <div className={`panel ${showPanel ? "show" : ""}`}></div>
+            <div
+              className={`create-panel ${showCreatePanel ? "show" : ""}`}
+            ></div>
+            <div>
+              <ViewTaskPanel
+                className={`view-task-panel ${showTaskPanel ? "show" : ""}`}
+                title={taskTitle}
+                description={taskDescription}
+                count={countSubTask}
+                column={statusName}
+                subtasks={subtasks}
+                onSubtaskToggle={(subtaskIndex) => {
+                  // Toggle the completion status of the subtask
+                  const updatedSubtasks = [...subtasks];
+                  updatedSubtasks[subtaskIndex].isCompleted =
+                    !updatedSubtasks[subtaskIndex].isCompleted;
+                  setSubtasks(updatedSubtasks);
+                }}
+              />
+            </div>
           </div>
         </div>
       </div>

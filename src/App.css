@@ -10,7 +10,7 @@
 /* Left sidebar */
 .left-sidebar {
   min-width: 20%; /* 20% of the container's width */
-  background-color: #f0f0f0; /* Example background color */
+  background-color: #1f1c1ce3;
   padding: 20px;
   box-sizing: border-box;
   display: flex;
@@ -34,7 +34,6 @@
 
 .main-content {
   flex-grow: 1; /* Allow this area to grow and fill remaining space */
-  padding: 2px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -42,13 +41,16 @@
 
 /* Upper container */
 .upper-container {
-  background-color: #e0e0e0; /* Example background color */
+  background-color: #1f1c1ce3;
   padding: 20px;
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
   height: 10vh;
   justify-content: space-between;
+  font-size: 28px;
+  font-weight: bold;
+  color: white;
 }
 
 /* Middle container (CSS Grid for columns) */
@@ -58,12 +60,12 @@
   grid-template-columns: repeat(4, 1fr); /* Three columns */
   grid-template-rows: 35px;
   flex: 1;
-  height: 90vh;
+  min-height: 100%;
 }
 
 /* Individual columns within the middle container */
 .column {
-  background-color: #c0c0c0; /* Example background color */
+  background-color: #100f0fea; /* Example background color */
   padding: 10px;
   box-sizing: border-box;
   display: flex;
@@ -71,7 +73,7 @@
   /* Additional styling for the labels */
 }
 .right-sidebar {
-  background-color: #c0c0c0; /* Example background color */
+  background-color: #100f0fea; /* Example background color */
   padding: 10px;
   box-sizing: border-box;
   display: flex;
@@ -83,7 +85,7 @@
 /* Optional: Style for the "Remove Left Sidebar" button */
 .container button {
   margin-top: 10px;
-  background-color: #ff5733; /* Example button color */
+  background-color: #a05eb6; /* Example button color */
   color: white;
   border: none;
   padding: 10px 15px;
@@ -91,9 +93,9 @@
 }
 
 .container button:hover {
-  background-color: #ff341b; /* Example button color on hover */
+  background-color: #bf85c7; /* Example button color on hover */
 }
-.panel {
+.create-panel {
   display: none;
   position: absolute;
   top: 20vh;
@@ -108,7 +110,7 @@
   ); /* Semi-transparent background for the panel */
   z-index: 1; /* Make the panel appear in front of other elements */
 }
-.panel.show {
+.create-panel.show {
   display: block;
   position: absolute;
   top: 20vh;

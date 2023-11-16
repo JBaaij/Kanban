@@ -11,7 +11,7 @@ const TaskButton = (props: TaskButtonProps) => {
   return (
     <div className={`task-button ${className || ""}`} onClick={onClick}>
       <div>{label}</div>
-      <div>{subTask}</div>
+      <div className="subtaskStyle">{subTask}</div>
     </div>
   );
 };
