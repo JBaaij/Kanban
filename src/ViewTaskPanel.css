@@ -13,13 +13,7 @@
   color: white;
   border-radius: 10px;
   padding: 35px;
-
-  background-color: rgba(
-    85,
-    85,
-    90,
-    0.992
-  ); /* Semi-transparent background for the panel */
+  background-color: rgb(71, 69, 69);
   z-index: 1; /* Make the panel appear in front of other elements */
 }
 .titleStyle {
@@ -36,7 +30,7 @@
   font-weight: bold;
 }
 .checkboxStyle {
-  background-color: rgb(62, 64, 64);
+  background-color: rgb(44, 44, 44);
   border-radius: 5px;
   padding-top: 5px;
   padding-bottom: 5px;

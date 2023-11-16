@@ -3,7 +3,7 @@
 /* Container for the entire layout */
 .container {
   display: flex;
-  height: 100vh; /* 100% viewport height */
+  /* 100% viewport height */
   position: relative; /* Create a positioning context */
 }
 
@@ -21,6 +21,8 @@
 .title {
   font-weight: bold;
   margin-bottom: 10px;
+  color: white;
+  font-size: 32px;
 }
 
 /* Buttons */
@@ -33,7 +35,6 @@
 /* Main content area (with or without left sidebar) */
 
 .main-content {
-  flex-grow: 1; /* Allow this area to grow and fill remaining space */
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -53,14 +54,11 @@
   color: white;
 }
 
-/* Middle container (CSS Grid for columns) */
-
 .middle-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Three columns */
-  grid-template-rows: 35px;
-  flex: 1;
-  min-height: 100%;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 35px 1fr;
+  height: 90vh;
 }
 
 /* Individual columns within the middle container */
@@ -70,6 +68,9 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  color: lightgrey;
+  font-size: 13px;
+  font-weight: bold;
   /* Additional styling for the labels */
 }
 .right-sidebar {

@@ -36,7 +36,7 @@ function App() {
       {showLeftSidebar && (
         <div className="left-sidebar">
           {/* Title and buttons */}
-          <div className="title">Title</div>
+          <div className="title">Kanban</div>
           <LabelButton
             label={"Platform Launch"}
             onClick={() => {
@@ -73,9 +73,9 @@ function App() {
           {/* Middle container with 3 columns */}
           <div className="middle-container">
             {/* 3 columns */}
-            <div className="column">todo</div>
-            <div className="column">doing</div>
-            <div className="column">done</div>
+            <div className="column">TODO</div>
+            <div className="column">DOING</div>
+            <div className="column">DONE</div>
             <div className="right-sidebar">
               <div></div>
             </div>

@@ -1,9 +1,15 @@
 .label-button {
   user-select: none;
   cursor: pointer;
-  display: inline-block;
   padding: 5px;
   border: 1px solid;
   border-radius: 10px;
   background-color: #a05eb6;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+label-button:hover {
+  background-color: rgb(209, 195, 223);
 }
