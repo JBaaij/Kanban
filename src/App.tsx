@@ -112,7 +112,6 @@ function App() {
                 title={appState.taskTitle}
                 description={appState.taskDescription}
                 count={countSubTask}
-                column={appState.taskStatus}
                 subtasks={appState.subtasks}
                 onSubtaskToggle={(subtaskIndex) => {
                   // Toggle the completion status of the subtask
