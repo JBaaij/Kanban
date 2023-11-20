@@ -5,10 +5,18 @@ interface AppStateContext {
   setBoardName: (name: string) => void;
   boardNumber: number;
   setBoardNumber: (number: number) => void;
+  columnIndex: number;
+  setColumnIndex: (number: number) => void;
+  newColumnIndex: number;
+  setNewColumnIndex: (number: number) => void;
   boardLength: number;
   setBoardLength: (number: number) => void;
   taskTitle: string;
   setTaskTitle: (title: string) => void;
+  taskIndex: number;
+  setTaskIndex: (number: number) => void;
+  subtaskIndex: number;
+  setSubtaskIndex: (number: number) => void;
   taskDescription: string;
   setTaskDescription: (description: string) => void;
   subtasks: { title: string; isCompleted: boolean }[];
@@ -17,6 +25,8 @@ interface AppStateContext {
   setTaskStatus: (status: string) => void;
   dataState: any;
   setDataState: (data: any) => void;
+  isCompleted: boolean;
+  setIsCompleted: (value: boolean) => void;
 }
 
 const AppStateContext = createContext<AppStateContext>({
@@ -24,10 +34,18 @@ const AppStateContext = createContext<AppStateContext>({
   setBoardName: () => {},
   boardNumber: 0,
   setBoardNumber: () => {},
+  columnIndex: 0,
+  setColumnIndex: () => {},
+  newColumnIndex: 0,
+  setNewColumnIndex: () => {},
   boardLength: 0,
   setBoardLength: () => {},
   taskTitle: "",
   setTaskTitle: () => {},
+  taskIndex: 0,
+  setTaskIndex: () => {},
+  subtaskIndex: 0,
+  setSubtaskIndex: () => {},
   taskDescription: "",
   setTaskDescription: () => {},
   subtasks: [],
@@ -36,19 +54,26 @@ const AppStateContext = createContext<AppStateContext>({
   setTaskStatus: () => {},
   dataState: null,
   setDataState: () => {},
+  isCompleted: false,
+  setIsCompleted: () => {},
 });
 
 const AppStateProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [boardName, setBoardName] = useState("Platform Launch");
   const [boardNumber, setBoardNumber] = useState(0);
+  const [columnIndex, setColumnIndex] = useState(0);
+  const [newColumnIndex, setNewColumnIndex] = useState(0);
   const [boardLength, setBoardLength] = useState(3);
   const [taskTitle, setTaskTitle] = useState("");
+  const [taskIndex, setTaskIndex] = useState(0);
+  const [subtaskIndex, setSubtaskIndex] = useState(0);
   const [taskDescription, setTaskDescription] = useState("");
   const [subtasks, setSubtasks] = useState<
     { title: string; isCompleted: boolean }[]
   >([]);
   const [taskStatus, setTaskStatus] = useState("");
   const [dataState, setDataState] = useState(jsonData);
+  const [isCompleted, setIsCompleted] = useState<boolean>(false);
 
   return (
     <AppStateContext.Provider
@@ -57,10 +82,18 @@ const AppStateProvider: FC<{ children: ReactNode }> = ({ children }) => {
         setBoardName,
         boardNumber,
         setBoardNumber,
+        columnIndex,
+        setColumnIndex,
+        newColumnIndex,
+        setNewColumnIndex,
         boardLength,
         setBoardLength,
         taskTitle,
         setTaskTitle,
+        taskIndex,
+        setTaskIndex,
+        subtaskIndex,
+        setSubtaskIndex,
         taskDescription,
         setTaskDescription,
         subtasks,
@@ -69,6 +102,8 @@ const AppStateProvider: FC<{ children: ReactNode }> = ({ children }) => {
         setTaskStatus,
         dataState,
         setDataState,
+        isCompleted,
+        setIsCompleted,
       }}
     >
       {children}

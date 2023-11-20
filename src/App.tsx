@@ -1,7 +1,6 @@
 import React from "react";
 import { useState, useContext } from "react";
 import "./App.css";
-import jsonData from "../src/data.json";
 import LabelButton from "./LabelButton";
 import TaskButton from "./TaskButton";
 import ViewTaskPanel from "./ViewTaskPanel";
@@ -13,9 +12,7 @@ function App() {
   const [countSubTask, setCountSubTask] = useState("");
   const appState = useContext(AppStateContext);
 
-  console.log(jsonData.boards.length);
-  console.log(appState.dataState.boards[0].name);
-  appState.setBoardLength(jsonData.boards.length);
+  appState.setBoardLength(appState.dataState.boards.length);
   const toggleLeftSidebar = () => {
     setShowLeftSidebar(!showLeftSidebar);
   };
@@ -69,27 +66,31 @@ function App() {
             <div className="right-sidebar">
               <div></div>
             </div>
-            {jsonData.boards[appState.boardNumber].columns.map(
-              (column, columnIndex) => (
+            {appState.dataState.boards[appState.boardNumber].columns.map(
+              (column: any, columnIndex: number) => (
                 <div className="column" key={columnIndex}>
-                  {column.tasks.map((task, index) => (
+                  {column.tasks.map((task: any, index: number) => (
                     <TaskButton
                       key={index}
                       label={task.title}
-                      subTask={`${
-                        task.subtasks.filter((subtask) => subtask.isCompleted)
-                          .length
+                      subTaskCount={`${
+                        task.subtasks.filter(
+                          (subtask: any) => subtask.isCompleted
+                        ).length
                       } of ${task.subtasks.length} subtasks`}
                       onClick={() => {
                         toggleTaskPanel();
                         appState.setTaskTitle(task.title);
+                        appState.setTaskIndex(index);
                         appState.setTaskDescription(task.description);
                         appState.setSubtasks([...task.subtasks]);
                         appState.setTaskStatus(column.name);
+                        appState.setColumnIndex(columnIndex);
+                        console.log(columnIndex);
                         setCountSubTask(
                           `subtasks (${
                             task.subtasks.filter(
-                              (subtask) => subtask.isCompleted
+                              (subtask: any) => subtask.isCompleted
                             ).length
                           } of ${task.subtasks.length}) `
                         );

@@ -2,16 +2,16 @@ import "./TaskButton.css";
 
 interface TaskButtonProps {
   label: string;
-  subTask: string;
+  subTaskCount: string;
   onClick: () => void;
   className?: string;
 }
 const TaskButton = (props: TaskButtonProps) => {
-  const { label, subTask, onClick, className } = props;
+  const { label, subTaskCount, onClick, className } = props;
   return (
     <div className={`task-button ${className || ""}`} onClick={onClick}>
       <div>{label}</div>
-      <div className="subtaskStyle">{subTask}</div>
+      <div className="subtaskStyle">{subTaskCount}</div>
     </div>
   );
 };
