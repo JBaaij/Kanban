@@ -16,49 +16,52 @@ const ViewTaskPanel = (props: ViewTaskPanelProps) => {
     props;
 
   const appState = useContext(AppStateContext);
+  //
+
   useEffect(() => {
+    console.log("check 1");
     appState.setDataState((prevDataState: any) => {
       const updatedDataState = { ...prevDataState };
       const { boardNumber, columnIndex, taskIndex, subtaskIndex } = appState;
-
-      console.log(appState.isCompleted);
-      console.log(appState.taskStatus);
       // Toggle the isCompleted property of the specific subtask
       updatedDataState.boards[boardNumber].columns[columnIndex].tasks[
         taskIndex
       ].subtasks[subtaskIndex].isCompleted =
         !prevDataState.boards[boardNumber].columns[columnIndex].tasks[taskIndex]
           .subtasks[subtaskIndex].isCompleted;
-
       return updatedDataState;
     });
-    console.log(appState.dataState);
   }, [appState.isCompleted, appState.subtaskIndex]);
-  /*
+
   useEffect(() => {
-    appState.setDataState((prevDataState: any) => {
-      const updatedDataState = { ...prevDataState };
-      const { boardNumber, columnIndex, taskIndex } = appState;
+    console.log("check 2");
 
-      console.log(appState.taskStatus);
-      // Find the current column of the task
+    const { boardNumber, columnIndex, taskIndex } = appState;
+
+    if (appState.columnIndex !== appState.newColumnIndex) {
       const currentColumn =
-        updatedDataState.boards[boardNumber].columns[columnIndex];
-      console.log(currentColumn);
-      // Remove the task from the current column
-      const removedTask = currentColumn.tasks.splice(taskIndex, 1)[0];
+        appState.dataState.boards[boardNumber].columns[columnIndex].tasks;
+      console.log(
+        appState.dataState.boards[boardNumber].columns[columnIndex].tasks[
+          taskIndex
+        ].title
+      );
+      console.log(taskIndex);
 
-      // Add the task to the target column
+      // To remove the task from the current column, you can use the splice method
+      const removedTask = currentColumn.splice(taskIndex, 1)[0];
+      console.log(removedTask);
+
+      // Add the task to the target column at the beginning
       const targetColumnData =
-        updatedDataState.boards[boardNumber].columns[appState.newColumnIndex];
+        appState.dataState.boards[boardNumber].columns[appState.newColumnIndex];
       if (targetColumnData) {
-        targetColumnData.tasks.push(removedTask);
+        targetColumnData.tasks.unshift(removedTask); // Use unshift() to add at the beginning
+        appState.setColumnIndex(appState.newColumnIndex);
       }
+    }
+  }, [appState.newColumnIndex, appState.taskIndex]);
 
-      return updatedDataState;
-    });
-  }, [appState.newColumnIndex]);
-*/
   return (
     <div className={`${className || ""}`}>
       <div className="titleStyle">{title}</div>
@@ -83,35 +86,18 @@ const ViewTaskPanel = (props: ViewTaskPanelProps) => {
                     const noneCompleted = subtasks.every(
                       (subtask) => !subtask.isCompleted
                     );
-                    if (allCompleted && appState.taskStatus !== "Done") {
+                    if (allCompleted) {
                       appState.setTaskStatus("Done");
                       appState.setNewColumnIndex(2);
-                    } else if (
-                      noneCompleted &&
-                      appState.taskStatus !== "Todo"
-                    ) {
+                    } else if (noneCompleted) {
                       appState.setTaskStatus("Todo");
                       appState.setNewColumnIndex(0);
-                    } else if (appState.taskStatus !== "Doing") {
+                    } else {
                       appState.setTaskStatus("Doing");
                       appState.setNewColumnIndex(1);
                     }
                     appState.setIsCompleted(subtask.isCompleted);
                     appState.setSubtaskIndex(index);
-                    //const updatedSubtasks = [...appState.subtasks];
-                    //console.log(index);
-                    //console.log(subtask.isCompleted);
-                    //console.log(subtask);
-                    const subtaskIndex = index; // Add this line to get the correct index
-                    //console.log(appState.taskStatus);
-                    //console.log(appState.isCompleted);
-                    /*
-                    console.log(
-                      appState.dataState.boards[appState.boardNumber].name
-                    );
-                    console.log(subtask.isCompleted);
-                  changeDataSet(subtask.isCompleted);
-                  */
                   }}
                 />
                 {subtask.title}
