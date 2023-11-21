@@ -11,7 +11,7 @@ function App() {
   const [showLeftSidebar, setShowLeftSidebar] = useState(true);
   const [showCreatePanel, setShowCreatePanel] = useState(false);
   const [showTaskPanel, setShowTaskPanel] = useState(false);
-  //const [countSubTask, setCountSubTask] = useState("");
+  const [countSubTask, setCountSubTask] = useState("");
   const appState = useContext(AppStateContext);
 
   appState.setBoardLength(jsonData.boards.length);
@@ -89,7 +89,7 @@ function App() {
                         appState.setTaskStatus(column.name);
                         appState.setColumnIndex(columnIndex);
                         console.log(columnIndex);
-                        appState.setCountSubTask(
+                        setCountSubTask(
                           `subtasks (${
                             task.subtasks.filter(
                               (subtask: any) => subtask.isCompleted
@@ -114,7 +114,7 @@ function App() {
                 className={`view-task-panel ${showTaskPanel ? "show" : ""}`}
                 title={appState.taskTitle}
                 description={appState.taskDescription}
-                count={appState.countSubTask}
+                count={countSubTask}
                 subtasks={appState.subtasks}
                 onSubtaskToggle={(subtaskIndex) => {
                   // Toggle the completion status of the subtask
