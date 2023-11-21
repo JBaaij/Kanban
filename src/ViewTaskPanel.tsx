@@ -93,7 +93,9 @@ const ViewTaskPanel = (props: ViewTaskPanelProps) => {
                       appState.setNewColumnIndex(1);
                     }
                     //appState.setIsCompleted(subtask.isCompleted);
-                    console.log(`checktaskindex nr 3   ${appState.taskIndex}`);
+                    console.log(
+                      `check newColumnIndex   ${appState.newColumnIndex}`
+                    );
                     appState.setSubtaskIndex(index);
                     console.log(`check index${index}`);
                     console.log(

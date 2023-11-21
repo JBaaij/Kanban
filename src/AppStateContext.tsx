@@ -66,7 +66,7 @@ const AppStateProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [boardName, setBoardName] = useState("Platform Launch");
   const [boardNumber, setBoardNumber] = useState(0);
   const [columnIndex, setColumnIndex] = useState(0);
-  const [newColumnIndex, setNewColumnIndex] = useState(0);
+  const [newColumnIndex, setNewColumnIndex] = useState(5);
   const [boardLength, setBoardLength] = useState(3);
   const [taskTitle, setTaskTitle] = useState("");
   const [taskIndex, setTaskIndex] = useState(0);
