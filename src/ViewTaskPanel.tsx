@@ -60,7 +60,7 @@ const ViewTaskPanel = (props: ViewTaskPanelProps) => {
         appState.setColumnIndex(appState.newColumnIndex);
       }
     }
-  }, [appState.newColumnIndex, appState.taskIndex]);
+  }, [appState.newColumnIndex]);
 
   return (
     <div className={`${className || ""}`}>
@@ -96,8 +96,8 @@ const ViewTaskPanel = (props: ViewTaskPanelProps) => {
                       appState.setTaskStatus("Doing");
                       appState.setNewColumnIndex(1);
                     }
-                    appState.setIsCompleted(subtask.isCompleted);
-                    appState.setSubtaskIndex(index);
+                    //appState.setIsCompleted(subtask.isCompleted);
+                    //appState.setSubtaskIndex(index);
                   }}
                 />
                 {subtask.title}

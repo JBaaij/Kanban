@@ -13,6 +13,8 @@ interface AppStateContext {
   setBoardLength: (number: number) => void;
   taskTitle: string;
   setTaskTitle: (title: string) => void;
+  countSubTask: string;
+  setCountSubTask: (title: string) => void;
   taskIndex: number;
   setTaskIndex: (number: number) => void;
   subtaskIndex: number;
@@ -42,6 +44,8 @@ const AppStateContext = createContext<AppStateContext>({
   setBoardLength: () => {},
   taskTitle: "",
   setTaskTitle: () => {},
+  countSubTask: "",
+  setCountSubTask: () => {},
   taskIndex: 0,
   setTaskIndex: () => {},
   subtaskIndex: 0,
@@ -74,7 +78,7 @@ const AppStateProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [taskStatus, setTaskStatus] = useState("");
   const [dataState, setDataState] = useState(jsonData);
   const [isCompleted, setIsCompleted] = useState<boolean>(false);
-
+  const [countSubTask, setCountSubTask] = useState("");
   return (
     <AppStateContext.Provider
       value={{
@@ -104,6 +108,8 @@ const AppStateProvider: FC<{ children: ReactNode }> = ({ children }) => {
         setDataState,
         isCompleted,
         setIsCompleted,
+        countSubTask,
+        setCountSubTask,
       }}
     >
       {children}

@@ -1,18 +1,22 @@
 import React from "react";
 import { useState, useContext } from "react";
 import "./App.css";
+import jsonData from "../src/data.json";
 import LabelButton from "./LabelButton";
 import TaskButton from "./TaskButton";
 import ViewTaskPanel from "./ViewTaskPanel";
 import { AppStateContext } from "./AppStateContext";
+
 function App() {
   const [showLeftSidebar, setShowLeftSidebar] = useState(true);
   const [showCreatePanel, setShowCreatePanel] = useState(false);
   const [showTaskPanel, setShowTaskPanel] = useState(false);
-  const [countSubTask, setCountSubTask] = useState("");
+  //const [countSubTask, setCountSubTask] = useState("");
   const appState = useContext(AppStateContext);
 
-  appState.setBoardLength(appState.dataState.boards.length);
+  console.log(jsonData.boards.length);
+  console.log(appState.dataState.boards[0].name);
+  appState.setBoardLength(jsonData.boards.length);
   const toggleLeftSidebar = () => {
     setShowLeftSidebar(!showLeftSidebar);
   };
@@ -87,7 +91,7 @@ function App() {
                         appState.setTaskStatus(column.name);
                         appState.setColumnIndex(columnIndex);
                         console.log(columnIndex);
-                        setCountSubTask(
+                        appState.setCountSubTask(
                           `subtasks (${
                             task.subtasks.filter(
                               (subtask: any) => subtask.isCompleted
@@ -112,7 +116,7 @@ function App() {
                 className={`view-task-panel ${showTaskPanel ? "show" : ""}`}
                 title={appState.taskTitle}
                 description={appState.taskDescription}
-                count={countSubTask}
+                count={appState.countSubTask}
                 subtasks={appState.subtasks}
                 onSubtaskToggle={(subtaskIndex) => {
                   // Toggle the completion status of the subtask
