@@ -17,7 +17,7 @@ const ViewTaskPanel = (props: ViewTaskPanelProps) => {
 
   const appState = useContext(AppStateContext);
   //
-
+  /*
   useEffect(() => {
     console.log("check 1");
     appState.setDataState((prevDataState: any) => {
@@ -32,7 +32,7 @@ const ViewTaskPanel = (props: ViewTaskPanelProps) => {
       return updatedDataState;
     });
   }, [appState.isCompleted, appState.subtaskIndex]);
-
+*/
   useEffect(() => {
     console.log("check 2");
 
@@ -41,23 +41,19 @@ const ViewTaskPanel = (props: ViewTaskPanelProps) => {
     if (appState.columnIndex !== appState.newColumnIndex) {
       const currentColumn =
         appState.dataState.boards[boardNumber].columns[columnIndex].tasks;
-      console.log(
-        appState.dataState.boards[boardNumber].columns[columnIndex].tasks[
-          taskIndex
-        ].title
-      );
-      console.log(taskIndex);
 
       // To remove the task from the current column, you can use the splice method
-      const removedTask = currentColumn.splice(taskIndex, 1)[0];
+      console.log(`checktaskindex ${appState.taskIndex}`);
+      const removedTask = currentColumn.splice(appState.taskIndex, 1)[0];
       console.log(removedTask);
-
+      console.log(`checktaskindex 2${appState.taskIndex}`);
       // Add the task to the target column at the beginning
       const targetColumnData =
         appState.dataState.boards[boardNumber].columns[appState.newColumnIndex];
       if (targetColumnData) {
         targetColumnData.tasks.unshift(removedTask); // Use unshift() to add at the beginning
         appState.setColumnIndex(appState.newColumnIndex);
+        appState.setTaskIndex(0);
       }
     }
   }, [appState.newColumnIndex]);
@@ -97,7 +93,12 @@ const ViewTaskPanel = (props: ViewTaskPanelProps) => {
                       appState.setNewColumnIndex(1);
                     }
                     //appState.setIsCompleted(subtask.isCompleted);
-                    //appState.setSubtaskIndex(index);
+                    console.log(`checktaskindex nr 3   ${appState.taskIndex}`);
+                    appState.setSubtaskIndex(index);
+                    console.log(`check index${index}`);
+                    console.log(
+                      `check appState.SubtaskIndex${appState.subtaskIndex}`
+                    );
                   }}
                 />
                 {subtask.title}

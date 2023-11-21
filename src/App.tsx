@@ -14,8 +14,6 @@ function App() {
   //const [countSubTask, setCountSubTask] = useState("");
   const appState = useContext(AppStateContext);
 
-  console.log(jsonData.boards.length);
-  console.log(appState.dataState.boards[0].name);
   appState.setBoardLength(jsonData.boards.length);
   const toggleLeftSidebar = () => {
     setShowLeftSidebar(!showLeftSidebar);
