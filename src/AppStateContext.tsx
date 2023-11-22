@@ -1,5 +1,6 @@
 import { createContext, FC, ReactNode, useState } from "react";
 import jsonData from "../src/data.json";
+
 interface AppStateContext {
   boardName: string;
   setBoardName: (name: string) => void;
@@ -79,6 +80,7 @@ const AppStateProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [dataState, setDataState] = useState(jsonData);
   const [isCompleted, setIsCompleted] = useState<boolean>(false);
   const [countSubTask, setCountSubTask] = useState("");
+
   return (
     <AppStateContext.Provider
       value={{

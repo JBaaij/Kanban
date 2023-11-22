@@ -16,23 +16,7 @@ const ViewTaskPanel = (props: ViewTaskPanelProps) => {
     props;
 
   const appState = useContext(AppStateContext);
-  //
-  /*
-  useEffect(() => {
-    console.log("check 1");
-    appState.setDataState((prevDataState: any) => {
-      const updatedDataState = { ...prevDataState };
-      const { boardNumber, columnIndex, taskIndex, subtaskIndex } = appState;
-      // Toggle the isCompleted property of the specific subtask
-      updatedDataState.boards[boardNumber].columns[columnIndex].tasks[
-        taskIndex
-      ].subtasks[subtaskIndex].isCompleted =
-        !prevDataState.boards[boardNumber].columns[columnIndex].tasks[taskIndex]
-          .subtasks[subtaskIndex].isCompleted;
-      return updatedDataState;
-    });
-  }, [appState.isCompleted, appState.subtaskIndex]);
-*/
+
   useEffect(() => {
     console.log("check 2");
 
@@ -43,10 +27,9 @@ const ViewTaskPanel = (props: ViewTaskPanelProps) => {
         appState.dataState.boards[boardNumber].columns[columnIndex].tasks;
 
       // To remove the task from the current column, you can use the splice method
-      console.log(`checktaskindex ${appState.taskIndex}`);
+
       const removedTask = currentColumn.splice(appState.taskIndex, 1)[0];
-      console.log(removedTask);
-      console.log(`checktaskindex 2${appState.taskIndex}`);
+
       // Add the task to the target column at the beginning
       const targetColumnData =
         appState.dataState.boards[boardNumber].columns[appState.newColumnIndex];
@@ -54,8 +37,20 @@ const ViewTaskPanel = (props: ViewTaskPanelProps) => {
         targetColumnData.tasks.unshift(removedTask); // Use unshift() to add at the beginning
         appState.setColumnIndex(appState.newColumnIndex);
         appState.setTaskIndex(0);
+
+        const updatedDataStateCopy = { ...appState.dataState };
+        // Update dataState in the copy
+        updatedDataStateCopy.boards[boardNumber].columns[columnIndex].tasks =
+          currentColumn;
+        updatedDataStateCopy.boards[boardNumber].columns[
+          appState.newColumnIndex
+        ].tasks = targetColumnData.tasks;
+
+        // Update dataState in the context
+        appState.setDataState(updatedDataStateCopy);
       }
     }
+    console.log(appState.dataState);
   }, [appState.newColumnIndex]);
 
   return (
@@ -93,14 +88,8 @@ const ViewTaskPanel = (props: ViewTaskPanelProps) => {
                       appState.setNewColumnIndex(1);
                     }
                     //appState.setIsCompleted(subtask.isCompleted);
-                    console.log(
-                      `check newColumnIndex   ${appState.newColumnIndex}`
-                    );
+
                     appState.setSubtaskIndex(index);
-                    console.log(`check index${index}`);
-                    console.log(
-                      `check appState.SubtaskIndex${appState.subtaskIndex}`
-                    );
                   }}
                 />
                 {subtask.title}
