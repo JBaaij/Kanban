@@ -30,6 +30,15 @@ interface AppStateContext {
   setDataState: (data: any) => void;
   isCompleted: boolean;
   setIsCompleted: (value: boolean) => void;
+  // New state properties
+  newTaskTitle: string;
+  setNewTaskTitle: (title: string) => void;
+  newTaskDescription: string;
+  setNewTaskDescription: (description: string) => void;
+  newSubtasks: { title: string; isCompleted: boolean }[];
+  setNewSubtasks: (subtasks: { title: string; isCompleted: boolean }[]) => void;
+  newTaskStatus: string;
+  setNewTaskStatus: (status: string) => void;
 }
 
 const AppStateContext = createContext<AppStateContext>({
@@ -61,6 +70,15 @@ const AppStateContext = createContext<AppStateContext>({
   setDataState: () => {},
   isCompleted: false,
   setIsCompleted: () => {},
+  // New state properties
+  newTaskTitle: "",
+  setNewTaskTitle: () => {},
+  newTaskDescription: "",
+  setNewTaskDescription: () => {},
+  newSubtasks: [],
+  setNewSubtasks: () => {},
+  newTaskStatus: "",
+  setNewTaskStatus: () => {},
 });
 
 const AppStateProvider: FC<{ children: ReactNode }> = ({ children }) => {
@@ -80,7 +98,13 @@ const AppStateProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [dataState, setDataState] = useState(jsonData);
   const [isCompleted, setIsCompleted] = useState<boolean>(false);
   const [countSubTask, setCountSubTask] = useState("");
-
+  // New state properties and their initial values
+  const [newTaskTitle, setNewTaskTitle] = useState("");
+  const [newTaskDescription, setNewTaskDescription] = useState("");
+  const [newSubtasks, setNewSubtasks] = useState<
+    { title: string; isCompleted: boolean }[]
+  >([]);
+  const [newTaskStatus, setNewTaskStatus] = useState("");
   return (
     <AppStateContext.Provider
       value={{
@@ -112,6 +136,15 @@ const AppStateProvider: FC<{ children: ReactNode }> = ({ children }) => {
         setIsCompleted,
         countSubTask,
         setCountSubTask,
+        // New state properties and their update functions
+        newTaskTitle,
+        setNewTaskTitle,
+        newTaskDescription,
+        setNewTaskDescription,
+        newSubtasks,
+        setNewSubtasks,
+        newTaskStatus,
+        setNewTaskStatus,
       }}
     >
       {children}

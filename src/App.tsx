@@ -5,12 +5,15 @@ import jsonData from "../src/data.json";
 import LabelButton from "./LabelButton";
 import TaskButton from "./TaskButton";
 import ViewTaskPanel from "./ViewTaskPanel";
+import ViewAddNewTask from "./ViewAddNewTask";
+import ViewAmendPanel from "./ViewAmendPanel";
 import { AppStateContext } from "./AppStateContext";
 
 function App() {
   const [showLeftSidebar, setShowLeftSidebar] = useState(true);
   const [showCreatePanel, setShowCreatePanel] = useState(false);
   const [showTaskPanel, setShowTaskPanel] = useState(false);
+  const [showAmendPanel, setShowAmendPanel] = useState(false);
   const [countSubTask, setCountSubTask] = useState("");
   const appState = useContext(AppStateContext);
 
@@ -20,6 +23,9 @@ function App() {
   };
   const toggleCreatePanel = () => {
     setShowCreatePanel(!showCreatePanel);
+  };
+  const toggleAmendPanel = () => {
+    setShowAmendPanel(!showAmendPanel);
   };
   const toggleTaskPanel = () => {
     setShowTaskPanel(!showTaskPanel);
@@ -50,7 +56,8 @@ function App() {
         <div>
           <div className="upper-container">
             <span>{appState.boardName}</span>
-            <button onClick={toggleCreatePanel}>Open/Close Panel</button>
+            <button onClick={toggleCreatePanel}>+Add New Task</button>
+            <button onClick={toggleAmendPanel}>Amend Task</button>
           </div>
           {/* Middle container with 3 columns */}
           <div className="middle-container">
@@ -123,6 +130,16 @@ function App() {
                     !updatedSubtasks[subtaskIndex].isCompleted;
                   appState.setSubtasks(updatedSubtasks);
                 }}
+              />
+              <ViewAddNewTask
+                className={`create-panel ${showCreatePanel ? "show" : ""}`}
+                panelTitle="Add New Task"
+                description={appState.taskDescription}
+              />
+              <ViewAmendPanel
+                className={`amend-panel ${showAmendPanel ? "show" : ""}`}
+                panelTitle="Amend Task"
+                description={appState.taskDescription}
               />
             </div>
           </div>

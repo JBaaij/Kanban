@@ -91,38 +91,11 @@
   border: none;
   padding: 10px 15px;
   cursor: pointer;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 15px;
 }
 
 .container button:hover {
   background-color: #bf85c7; /* Example button color on hover */
-}
-.create-panel {
-  display: none;
-  position: absolute;
-  top: 20vh;
-  left: 75vh;
-  width: 30%; /* Adjust the width as needed */
-  height: 50%; /* Cover the entire height of the container */
-  background-color: rgba(
-    113,
-    112,
-    121,
-    0.992
-  ); /* Semi-transparent background for the panel */
-  z-index: 1; /* Make the panel appear in front of other elements */
-}
-.create-panel.show {
-  display: block;
-  position: absolute;
-  top: 20vh;
-  left: 75vh;
-  width: 30%; /* Adjust the width as needed */
-  height: 50%; /* Cover the entire height of the container */
-  background-color: rgba(
-    113,
-    112,
-    121,
-    0.992
-  ); /* Semi-transparent background for the panel */
-  z-index: 1; /* Make the panel appear in front of other elements */
 }
