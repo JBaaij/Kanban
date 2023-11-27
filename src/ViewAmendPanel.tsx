@@ -66,7 +66,7 @@ const ViewAmendPanel: React.FC<ViewAmendPanelProps> = (props) => {
     // Create an updated task object with the new description and subtasks
     const updatedTask = {
       description: appState.newTaskDescription,
-      subtasks: appState.newSubtasks,
+      subtasksNew: appState.newSubtasks,
     };
     console.log(description);
     // Get a reference to the task you want to update
@@ -83,7 +83,7 @@ const ViewAmendPanel: React.FC<ViewAmendPanelProps> = (props) => {
       console.log(description);
       // Optionally, you can also update the subtasks
       //taskToUpdate.subtasks = updatedTask.subtasks;
-
+      taskToUpdate.subtasks = appState.newSubtasks;
       // Now, update appState.dataState with the modified task
       const updatedDataStateCopy = { ...appState.dataState };
       updatedDataStateCopy.boards[appState.boardNumber].columns[
