@@ -61,29 +61,34 @@ const ViewAmendPanel: React.FC<ViewAmendPanelProps> = (props) => {
       (_, index) => index !== subtaskIndex
     );
     appState.setSubtasks(updatedSubtasks);
+    console.log(updatedSubtasks);
+    console.log(appState.subtasks);
   };
+
+  useEffect(() => {
+    console.log("yoyiiyoyii"); // This code will run after the component re-renders
+    console.log(appState.subtasks);
+  }, [appState.subtasks]); // This watches for changes in appState.subtasks
   const updateTask = () => {
     // Create an updated task object with the new description and subtasks
     const updatedTask = {
       description: appState.newTaskDescription,
-      subtasksNew: appState.newSubtasks,
+      subtasks: [
+        ...appState.subtasks, // Add the old subtasks
+        ...appState.newSubtasks, // Add the new subtasks
+      ],
     };
-    console.log(description);
-    // Get a reference to the task you want to update
+
     const taskToUpdate =
       appState.dataState.boards[appState.boardNumber].columns[
         appState.columnIndex
       ].tasks[appState.taskIndex];
 
-    // Check if the task exists before updating
     if (taskToUpdate) {
-      // Update the task's description
-      console.log("jabadabadoe");
       taskToUpdate.description = description;
-      console.log(description);
-      // Optionally, you can also update the subtasks
-      //taskToUpdate.subtasks = updatedTask.subtasks;
-      taskToUpdate.subtasks = appState.newSubtasks;
+
+      taskToUpdate.subtasks = updatedTask.subtasks;
+
       // Now, update appState.dataState with the modified task
       const updatedDataStateCopy = { ...appState.dataState };
       updatedDataStateCopy.boards[appState.boardNumber].columns[

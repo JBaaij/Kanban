@@ -27,7 +27,11 @@ function App() {
   const toggleAmendPanel = () => {
     if (appState.taskTitle) {
       setShowAmendPanel(!showAmendPanel);
+      clearNewSubtasks();
     }
+  };
+  const clearNewSubtasks = () => {
+    appState.setNewSubtasks([]);
   };
   const toggleTaskPanel = () => {
     setShowTaskPanel(!showTaskPanel);
