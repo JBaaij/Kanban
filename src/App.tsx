@@ -25,10 +25,19 @@ function App() {
     setShowCreatePanel(!showCreatePanel);
   };
   const toggleAmendPanel = () => {
-    setShowAmendPanel(!showAmendPanel);
+    if (appState.taskTitle) {
+      setShowAmendPanel(!showAmendPanel);
+    }
   };
   const toggleTaskPanel = () => {
     setShowTaskPanel(!showTaskPanel);
+  };
+  const addTaskAndTogglePanel = () => {
+    setShowCreatePanel(false);
+  };
+  const deleteTaskAndTogglePanel = () => {
+    setShowAmendPanel(false);
+    setShowTaskPanel(false);
   };
 
   return (
@@ -57,7 +66,7 @@ function App() {
           <div className="upper-container">
             <span>{appState.boardName}</span>
             <button onClick={toggleCreatePanel}>+Add New Task</button>
-            <button onClick={toggleAmendPanel}>Amend Task</button>
+            <button onClick={toggleAmendPanel}>Adjust Task</button>
           </div>
           {/* Middle container with 3 columns */}
           <div className="middle-container">
@@ -135,11 +144,13 @@ function App() {
                 className={`create-panel ${showCreatePanel ? "show" : ""}`}
                 panelTitle="Add New Task"
                 description={appState.taskDescription}
+                onCreateTask={addTaskAndTogglePanel}
               />
               <ViewAmendPanel
                 className={`amend-panel ${showAmendPanel ? "show" : ""}`}
-                panelTitle="Amend Task"
+                panelTitle="Adjust Task"
                 description={appState.taskDescription}
+                onDeleteTask={deleteTaskAndTogglePanel}
               />
             </div>
           </div>

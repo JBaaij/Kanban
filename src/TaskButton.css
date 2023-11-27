@@ -16,3 +16,6 @@
   color: lightgray;
   margin-top: 5px;
 }
+.task-button:hover {
+  background-color: #7b747448;
+}

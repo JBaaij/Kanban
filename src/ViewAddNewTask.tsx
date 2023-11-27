@@ -5,7 +5,7 @@ interface ViewAddNewTaskProps {
   panelTitle: string;
   description?: string;
   className?: string;
-
+  onCreateTask: () => void;
   subtasks?: { title: string; isCompleted: boolean }[];
   onSubtaskToggle?: (index: number) => void;
 }
@@ -82,6 +82,7 @@ const ViewAddNewTask = (props: ViewAddNewTaskProps) => {
     appState.setNewTaskDescription("");
     appState.setNewTaskStatus("Todo");
     appState.setNewSubtasks([]);
+    props.onCreateTask();
   };
 
   return (

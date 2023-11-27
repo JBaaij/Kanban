@@ -1,3 +1,11 @@
+.titleStyle-adjust {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  color: rgb(154, 150, 150);
+  display: flex;
+  justify-content: center;
+}
 .amend-panel {
   display: none;
   position: absolute;
@@ -6,7 +14,7 @@
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 20vh;
+  top: 10vh;
   left: 73vh;
   width: 20%; /* Adjust the width as needed */
 
@@ -16,12 +24,7 @@
   background-color: rgb(71, 69, 69);
   z-index: 1;
 }
-.titleStyle {
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 30px;
-  color: white;
-}
+
 .descriptionStyle {
   font-size: 13px;
   color: lightgray;
@@ -35,4 +38,24 @@
   border-radius: 5px;
   padding-top: 5px;
   padding-bottom: 5px;
+}
+.form-header-adjust {
+  font-size: 20px;
+}
+.button-delete-subtask-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button-delete-subtask {
+  /* You can style the button as needed */
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+}
+.button-delete-subtask-container span {
+  flex: 1; /* This will make the span take up the available space and push the button to the right */
+  margin-right: 10px; /* Adjust the margin as needed to create space between the text and button */
 }
