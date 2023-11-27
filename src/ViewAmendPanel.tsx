@@ -26,15 +26,7 @@ const ViewAmendPanel: React.FC<ViewAmendPanelProps> = (props) => {
   };
 
   // Function to handle creating a new task
-  const updateTask = () => {
-    const updatedTask = {
-      description: appState.newTaskDescription,
-      status: appState.newTaskStatus,
-      subtasks: appState.newSubtasks,
-    };
 
-    props.onDeleteTask();
-  };
   const updateNewSubtaskTitle = (index: number, title: string) => {
     const updatedSubtasks = [...appState.newSubtasks];
     updatedSubtasks[index].title = title;
@@ -69,6 +61,41 @@ const ViewAmendPanel: React.FC<ViewAmendPanelProps> = (props) => {
       (_, index) => index !== subtaskIndex
     );
     appState.setSubtasks(updatedSubtasks);
+  };
+  const updateTask = () => {
+    // Create an updated task object with the new description and subtasks
+    const updatedTask = {
+      description: appState.newTaskDescription,
+      subtasks: appState.newSubtasks,
+    };
+    console.log(description);
+    // Get a reference to the task you want to update
+    const taskToUpdate =
+      appState.dataState.boards[appState.boardNumber].columns[
+        appState.columnIndex
+      ].tasks[appState.taskIndex];
+
+    // Check if the task exists before updating
+    if (taskToUpdate) {
+      // Update the task's description
+      console.log("jabadabadoe");
+      taskToUpdate.description = description;
+      console.log(description);
+      // Optionally, you can also update the subtasks
+      //taskToUpdate.subtasks = updatedTask.subtasks;
+
+      // Now, update appState.dataState with the modified task
+      const updatedDataStateCopy = { ...appState.dataState };
+      updatedDataStateCopy.boards[appState.boardNumber].columns[
+        appState.columnIndex
+      ].tasks[appState.taskIndex] = taskToUpdate;
+
+      // Update dataState in the context
+      appState.setDataState(updatedDataStateCopy);
+
+      // Call onDeleteTask if needed
+      props.onDeleteTask();
+    }
   };
 
   return (
