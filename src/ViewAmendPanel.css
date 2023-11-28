@@ -48,14 +48,50 @@
   align-items: center;
 }
 
-.button-delete-subtask {
+#button-delete-subtask {
   /* You can style the button as needed */
-  background-color: red;
+  background-color: rgb(130, 99, 208);
   color: white;
   border: none;
   padding: 5px 10px;
+  width: 25%;
+  border-radius: 20px;
+}
+
+#button-delete-subtask:hover {
+  background: rgb(193, 108, 108);
+  color: black;
 }
 .button-delete-subtask-container span {
   flex: 1; /* This will make the span take up the available space and push the button to the right */
   margin-right: 10px; /* Adjust the margin as needed to create space between the text and button */
+}
+#button-delete-task {
+  /* You can style the button as needed */
+  color: rgb(130, 99, 208);
+  background-color: white;
+  width: 96%;
+  border-radius: 20px;
+}
+#button-delete-task:hover {
+  background: rgb(193, 108, 108);
+  color: black;
+}
+#button-update-task {
+  background-color: rgb(130, 99, 208);
+  color: white;
+  width: 96%;
+  border-radius: 20px;
+}
+#button-add-subtask {
+  color: rgb(130, 99, 208);
+  background-color: white;
+  width: 96%;
+  border-radius: 20px;
+}
+#button-add-subtask:hover {
+  background-color: rgb(238, 232, 232);
+}
+#button-update-task:hover {
+  background-color: rgb(149, 125, 208);
 }

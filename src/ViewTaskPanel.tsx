@@ -62,7 +62,10 @@ const ViewTaskPanel = (props: ViewTaskPanelProps) => {
       <ul className="checkboxStyle">
         {subtasks &&
           subtasks.map((subtask, index) => (
-            <li key={index}>
+            <li
+              key={index}
+              className={subtask.isCompleted ? "completed-subtask" : ""}
+            >
               <label>
                 <input
                   type="checkbox"

@@ -125,7 +125,9 @@ const ViewAddNewTask = (props: ViewAddNewTaskProps) => {
             />
           </div>
         ))}
-        <button onClick={addNewSubtask}>Add New Subtask</button>
+        <button onClick={addNewSubtask} id="button-add-new-subtask">
+          +Add New Subtask
+        </button>
       </div>
 
       {/* Status */}
@@ -144,7 +146,9 @@ const ViewAddNewTask = (props: ViewAddNewTaskProps) => {
 
       {/* Create Task Button */}
       <div className="form-section">
-        <button onClick={createNewTask}>Create Task</button>
+        <button onClick={createNewTask} id="button-create-task">
+          Create Task
+        </button>
       </div>
     </div>
   );

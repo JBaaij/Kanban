@@ -70,3 +70,21 @@
   width: 98%;
   height: 25px;
 }
+#button-add-new-subtask {
+  color: rgb(130, 99, 208);
+  background-color: white;
+  width: 96%;
+  border-radius: 20px;
+}
+#button-add-new-subtask:hover {
+  background-color: rgb(238, 232, 232);
+}
+#button-create-task {
+  background-color: rgb(130, 99, 208);
+  color: white;
+  width: 96%;
+  border-radius: 20px;
+}
+#button-create-task:hover {
+  background-color: rgb(149, 125, 208);
+}

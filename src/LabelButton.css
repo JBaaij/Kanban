@@ -1,15 +1,18 @@
 .label-button {
   user-select: none;
   cursor: pointer;
-  padding: 5px;
-  border: 1px solid;
-  border-radius: 10px;
-  background-color: #a05eb6;
+  height: 50px;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  background-color: rgb(130, 99, 208);
   font-weight: bold;
   color: white;
-  margin-bottom: 20px;
   margin-top: 20px;
+  display: flex;
+  align-items: center;
+  padding-left: 35px;
+  font-size: 17px;
 }
-label-button:hover {
-  background-color: rgb(209, 195, 223);
+.label-button:hover {
+  background-color: rgb(149, 125, 208);
 }

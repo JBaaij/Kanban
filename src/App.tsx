@@ -50,6 +50,7 @@ function App() {
         <div className="left-sidebar">
           {/* Title and buttons */}
           <div className="title">Kanban</div>
+          <div className="allboards">ALL BOARDS ({appState.boardLength})</div>
           {appState.dataState.boards.map((board: any, index: number) => (
             <LabelButton
               key={index}
@@ -60,7 +61,9 @@ function App() {
               }}
             />
           ))}
-          <button onClick={toggleLeftSidebar}>Remove Left Sidebar</button>
+          <button onClick={toggleLeftSidebar} id="button-hide-sidebar">
+            Hide Sidebar
+          </button>
         </div>
       )}
 
@@ -69,8 +72,15 @@ function App() {
         <div>
           <div className="upper-container">
             <span>{appState.boardName}</span>
-            <button onClick={toggleCreatePanel}>+Add New Task</button>
-            <button onClick={toggleAmendPanel}>Adjust Task</button>
+            <button
+              onClick={toggleCreatePanel}
+              id="first-button-uppercontainer"
+            >
+              +Add New Task
+            </button>
+            <button onClick={toggleAmendPanel} id="button-uppercontainer">
+              Adjust Task
+            </button>
           </div>
           {/* Middle container with 3 columns */}
           <div className="middle-container">
@@ -123,9 +133,7 @@ function App() {
               )
             )}
 
-            <div className="right-sidebar">
-              <button>Button 4</button>
-            </div>
+            <div className="right-sidebar"></div>
             <div
               className={`create-panel ${showCreatePanel ? "show" : ""}`}
             ></div>

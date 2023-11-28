@@ -11,7 +11,7 @@
 .left-sidebar {
   min-width: 20%; /* 20% of the container's width */
   background-color: #1f1c1ce3;
-  padding: 20px;
+
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -23,8 +23,17 @@
   margin-bottom: 10px;
   color: white;
   font-size: 32px;
+  padding: 2vh;
+  margin-left: 2vh;
 }
 
+.allboards {
+  color: lightgray;
+  font-weight: bold;
+  margin-top: 1vh;
+  margin-left: 4vh;
+  font-size: 15px;
+}
 /* Buttons */
 
 .buttons {
@@ -98,4 +107,28 @@
 
 .container button:hover {
   background-color: #bf85c7; /* Example button color on hover */
+}
+#first-button-uppercontainer {
+  background-color: rgb(130, 99, 208);
+  color: white;
+  border-radius: 20px;
+  margin-left: 90vh;
+}
+
+#button-uppercontainer {
+  background-color: rgb(130, 99, 208);
+  color: white;
+  border-radius: 20px;
+}
+#button-uppercontainer:hover {
+  background-color: rgb(149, 125, 208);
+}
+#first-button-uppercontainer:hover {
+  background-color: rgb(149, 125, 208);
+}
+#button-hide-sidebar {
+  color: rgb(218, 207, 207);
+  font-size: 16px;
+  background-color: #3a3535e3;
+  margin-top: 55vh;
 }

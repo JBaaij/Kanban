@@ -134,7 +134,7 @@ const ViewAmendPanel: React.FC<ViewAmendPanelProps> = (props) => {
             <span>{subtask.title}</span> {/* Render the title as text */}
             <button
               onClick={() => deleteSubTask(index)}
-              className="button-delete-subtask"
+              id="button-delete-subtask"
             >
               Delete
             </button>
@@ -158,7 +158,9 @@ const ViewAmendPanel: React.FC<ViewAmendPanelProps> = (props) => {
             />
           </div>
         ))}
-        <button onClick={addNewSubtask}>Add New Subtask</button>
+        <button onClick={addNewSubtask} id="button-add-subtask">
+          Add New Subtask
+        </button>
       </div>
 
       {/* Status */}
@@ -169,10 +171,14 @@ const ViewAmendPanel: React.FC<ViewAmendPanelProps> = (props) => {
 
       {/* Create Task Button */}
       <div className="form-section">
-        <button onClick={updateTask}>Update Task</button>
+        <button onClick={updateTask} id="button-update-task">
+          Update Task
+        </button>
       </div>
       <div className="form-section">
-        <button onClick={deleteTask}>Delete Task</button>
+        <button onClick={deleteTask} id="button-delete-task">
+          Delete Task
+        </button>
       </div>
     </div>
   );
