@@ -138,3 +138,22 @@
   display: flex; /* Create a nested flex container for buttons */
   gap: 10px; /* Add some spacing between the buttons */
 }
+#button-create-new-board {
+  background-color: #3a3535e3;
+  user-select: none;
+  cursor: pointer;
+  height: 50px;
+  font-weight: bold;
+  color: white;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  padding-left: 36px;
+  font-size: 17px;
+  margin-right: 3vh;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+#button-create-new-board:hover {
+  background-color: rgb(95, 93, 92);
+}

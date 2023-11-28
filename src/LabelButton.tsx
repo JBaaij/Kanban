@@ -5,7 +5,7 @@ interface LabelButtonProps {
   onClick: () => void;
   className?: string;
   isSelected?: boolean;
-  index: number;
+  index?: number;
 }
 const LabelButton = (props: LabelButtonProps) => {
   const { label, onClick, className, isSelected, index } = props;

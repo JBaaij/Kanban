@@ -7,6 +7,7 @@ import TaskButton from "./TaskButton";
 import ViewTaskPanel from "./ViewTaskPanel";
 import ViewAddNewTask from "./ViewAddNewTask";
 import ViewAmendPanel from "./ViewAmendPanel";
+import ViewAddNewBoard from "./ViewAddNewBoard";
 import { AppStateContext } from "./AppStateContext";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
   const [showCreatePanel, setShowCreatePanel] = useState(false);
   const [showTaskPanel, setShowTaskPanel] = useState(false);
   const [showAmendPanel, setShowAmendPanel] = useState(false);
+  const [showNewBoardPanel, setShowNewBoardPanel] = useState(false);
   const [countSubTask, setCountSubTask] = useState("");
   const [selectedBoardIndex, setSelectedBoardIndex] = useState<number>(0);
   const appState = useContext(AppStateContext);
@@ -31,6 +33,12 @@ function App() {
       clearNewSubtasks();
     }
   };
+  const toggleNewBoardPanel = () => {
+    setShowNewBoardPanel(!showNewBoardPanel);
+    console.log("jabadabadoe");
+    console.log(showNewBoardPanel);
+  };
+
   const clearNewSubtasks = () => {
     appState.setNewSubtasks([]);
   };
@@ -47,6 +55,7 @@ function App() {
   const handleBoardClick = (index: number) => {
     setSelectedBoardIndex(index);
     // Rest of your code...
+    console.log(showAmendPanel);
   };
   return (
     <div className="container">
@@ -68,6 +77,9 @@ function App() {
               index={index} // Pass the index prop
             />
           ))}
+          <button id="button-create-new-board" onClick={toggleNewBoardPanel}>
+            +Create New Board
+          </button>
 
           <button onClick={toggleLeftSidebar} id="button-hide-sidebar">
             Hide Sidebar
@@ -173,6 +185,12 @@ function App() {
                 panelTitle="Adjust Task"
                 description={appState.taskDescription}
                 onDeleteTask={deleteTaskAndTogglePanel}
+              />
+              <ViewAddNewBoard
+                panelTitle="New Board Name"
+                className={`board-panel ${showNewBoardPanel ? "show" : ""}`}
+
+                //description={appState.taskDescription}
               />
             </div>
           </div>
