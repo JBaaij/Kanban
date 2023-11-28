@@ -15,6 +15,7 @@ function App() {
   const [showTaskPanel, setShowTaskPanel] = useState(false);
   const [showAmendPanel, setShowAmendPanel] = useState(false);
   const [countSubTask, setCountSubTask] = useState("");
+  const [selectedBoardIndex, setSelectedBoardIndex] = useState<number>(0);
   const appState = useContext(AppStateContext);
 
   appState.setBoardLength(jsonData.boards.length);
@@ -43,7 +44,10 @@ function App() {
     setShowAmendPanel(false);
     setShowTaskPanel(false);
   };
-
+  const handleBoardClick = (index: number) => {
+    setSelectedBoardIndex(index);
+    // Rest of your code...
+  };
   return (
     <div className="container">
       {showLeftSidebar && (
@@ -56,11 +60,15 @@ function App() {
               key={index}
               label={appState.dataState.boards[index].name}
               onClick={() => {
+                handleBoardClick(index); // Pass the index directly
                 appState.setBoardName(appState.dataState.boards[index].name);
                 appState.setBoardNumber(index);
               }}
+              isSelected={selectedBoardIndex === index}
+              index={index} // Pass the index prop
             />
           ))}
+
           <button onClick={toggleLeftSidebar} id="button-hide-sidebar">
             Hide Sidebar
           </button>
