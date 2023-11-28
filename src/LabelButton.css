@@ -15,7 +15,10 @@
   margin-right: 3vh;
 }
 .label-button:hover {
-  background-color: rgb(149, 125, 208);
+  background-color: rgb(95, 93, 92);
+}
+.selected:hover {
+  background-color: rgb(130, 99, 208);
 }
 .selected {
   user-select: none;

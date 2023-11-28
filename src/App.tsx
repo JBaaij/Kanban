@@ -80,15 +80,17 @@ function App() {
         <div>
           <div className="upper-container">
             <span>{appState.boardName}</span>
-            <button
-              onClick={toggleCreatePanel}
-              id="first-button-uppercontainer"
-            >
-              +Add New Task
-            </button>
-            <button onClick={toggleAmendPanel} id="button-uppercontainer">
-              Adjust Task
-            </button>
+            <div id="button-container">
+              <button
+                onClick={toggleCreatePanel}
+                id="first-button-uppercontainer"
+              >
+                +Add New Task
+              </button>
+              <button onClick={toggleAmendPanel} id="button-uppercontainer">
+                Adjust Task
+              </button>
+            </div>
           </div>
           {/* Middle container with 3 columns */}
           <div className="middle-container">
