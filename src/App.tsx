@@ -20,7 +20,7 @@ function App() {
   const [selectedBoardIndex, setSelectedBoardIndex] = useState<number>(0);
   const appState = useContext(AppStateContext);
 
-  appState.setBoardLength(jsonData.boards.length);
+  appState.setBoardLength(appState.dataState.boards.length);
   const toggleLeftSidebar = () => {
     setShowLeftSidebar(!showLeftSidebar);
   };
@@ -190,6 +190,9 @@ function App() {
                 panelTitle="Create New Board"
                 className={`board-panel ${showNewBoardPanel ? "show" : ""}`}
                 description={appState.taskDescription}
+                onCreateBoard={() => {
+                  toggleNewBoardPanel();
+                }}
               />
             </div>
           </div>

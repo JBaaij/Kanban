@@ -38,53 +38,54 @@ const ViewAddNewTask = (props: ViewAddNewTaskProps) => {
 
   const createNewTask = () => {
     // Create a new task object using the form data
-    const newTask = {
-      title: appState.newTaskTitle,
-      description: appState.newTaskDescription,
-      status: appState.newTaskStatus,
-      subtasks: appState.newSubtasks,
-    };
+    if (appState.newTaskTitle.length >= 3) {
+      const newTask = {
+        title: appState.newTaskTitle,
+        description: appState.newTaskDescription,
+        status: appState.newTaskStatus,
+        subtasks: appState.newSubtasks,
+      };
 
-    // Map the newTaskStatus to the columnIndex based on status values
-    let columnIndex;
+      // Map the newTaskStatus to the columnIndex based on status values
+      let columnIndex;
 
-    switch (appState.newTaskStatus) {
-      case "Todo":
-        columnIndex = 0;
-        break;
-      case "Doing":
-        columnIndex = 1;
-        break;
-      case "Done":
-        columnIndex = 2;
-        break;
-      default:
-        console.error(`Invalid task status: ${appState.newTaskStatus}`);
-        // Set the default value to "Todo" if the status is invalid
-        appState.setNewTaskStatus("Todo");
-        columnIndex = 0;
-        break;
+      switch (appState.newTaskStatus) {
+        case "Todo":
+          columnIndex = 0;
+          break;
+        case "Doing":
+          columnIndex = 1;
+          break;
+        case "Done":
+          columnIndex = 2;
+          break;
+        default:
+          console.error(`Invalid task status: ${appState.newTaskStatus}`);
+          // Set the default value to "Todo" if the status is invalid
+          appState.setNewTaskStatus("Todo");
+          columnIndex = 0;
+          break;
+      }
+
+      console.log(`new taskstatus ${appState.newTaskStatus}`);
+      console.log(`columnIndex ${columnIndex}`);
+
+      const board = appState.dataState.boards[appState.boardNumber];
+      console.log(`check 1 ${appState.boardNumber}`);
+
+      appState.dataState.boards[appState.boardNumber].columns[
+        columnIndex
+      ].tasks.unshift(newTask);
+
+      console.log(appState.dataState);
+
+      appState.setNewTaskTitle("");
+      appState.setNewTaskDescription("");
+      appState.setNewTaskStatus("Todo");
+      appState.setNewSubtasks([]);
+      props.onCreateTask();
     }
-
-    console.log(`new taskstatus ${appState.newTaskStatus}`);
-    console.log(`columnIndex ${columnIndex}`);
-
-    const board = appState.dataState.boards[appState.boardNumber];
-    console.log(`check 1 ${board}`);
-
-    appState.dataState.boards[appState.boardNumber].columns[
-      columnIndex
-    ].tasks.unshift(newTask);
-
-    console.log(appState.dataState);
-
-    appState.setNewTaskTitle("");
-    appState.setNewTaskDescription("");
-    appState.setNewTaskStatus("Todo");
-    appState.setNewSubtasks([]);
-    props.onCreateTask();
   };
-
   return (
     <div className={`${className || ""}`}>
       <div className="titleStyle">{panelTitle}</div>
