@@ -68,9 +68,12 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 35px 1fr;
-  height: 90vh;
+  height: 100vh;
 }
-
+.middle-container > .column {
+  min-width: 340px; /* Adjust the minimum width as needed */
+  flex-grow: 1; /* Allow columns to grow to fill available space */
+}
 /* Individual columns within the middle container */
 .column {
   background-color: #100f0fea; /* Example background color */
