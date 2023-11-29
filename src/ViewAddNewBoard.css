@@ -1,14 +1,14 @@
-board-panel {
+.board-panel {
   display: none;
   position: absolute;
 }
-board-panel.show {
+.board-panel.show {
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 20vh;
-  left: 73vh;
-  width: 20%; /* Adjust the width as needed */
+  top: 25vh;
+  left: 78vh;
+  width: 15%; /* Adjust the width as needed */
 
   color: white;
   border-radius: 10px;
@@ -21,4 +21,21 @@ board-panel.show {
   font-weight: bold;
   margin-bottom: 30px;
   color: white;
+}
+#button-board-name {
+  background-color: rgb(130, 99, 208);
+  color: white;
+  width: 100%;
+  border-radius: 20px;
+}
+#button-board-name:hover {
+  background-color: rgb(149, 125, 208);
+}
+.input-box-name {
+  background-color: rgb(42, 40, 40);
+  color: white;
+  font-weight: bold;
+  width: 98%;
+  height: 25px;
+  font-size: 16px;
 }

@@ -187,10 +187,9 @@ function App() {
                 onDeleteTask={deleteTaskAndTogglePanel}
               />
               <ViewAddNewBoard
-                panelTitle="New Board Name"
+                panelTitle="Create New Board"
                 className={`board-panel ${showNewBoardPanel ? "show" : ""}`}
-
-                //description={appState.taskDescription}
+                description={appState.taskDescription}
               />
             </div>
           </div>
