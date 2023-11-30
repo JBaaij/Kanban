@@ -1,23 +1,43 @@
-import React, { useState } from "react";
+import React, { Component } from "react";
+import Switch from "react-switch";
+import LightTheme from "./assets/icon-light-theme";
+interface SwitchButtonProps {
+  onChange: (checked: boolean) => void;
+  checked: boolean;
+}
 
-const ColorModeSwitch: React.FC = () => {
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
+class SwitchButton extends Component<SwitchButtonProps> {
+  constructor(props: SwitchButtonProps) {
+    super(props);
+  }
 
-  const toggleColorMode = () => {
-    setIsDarkMode(!isDarkMode);
-    // You can add logic here to toggle your application's color mode
+  handleChange = (checked: boolean) => {
+    this.props.onChange(checked);
   };
 
-  return (
-    <div className="color-mode-switch">
-      <button
-        className={`toggle-button ${isDarkMode ? "dark" : "light"}`}
-        onClick={toggleColorMode}
-      >
-        {isDarkMode ? "Dark Mode" : "Light Mode"}
-      </button>
-    </div>
-  );
-};
+  render() {
+    return (
+      <div className="example">
+        <label htmlFor="material-switch">
+          <Switch
+            checked={this.props.checked}
+            onChange={this.handleChange}
+            onColor="#8263D0"
+            onHandleColor="#8263D0"
+            handleDiameter={30}
+            uncheckedIcon={false}
+            checkedIcon={false}
+            boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
+            activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
+            height={20}
+            width={48}
+            className="react-switch"
+            id="material-switch"
+          />
+        </label>
+      </div>
+    );
+  }
+}
 
-export default ColorModeSwitch;
+export default SwitchButton;

@@ -152,16 +152,35 @@
   cursor: pointer;
   height: 50px;
   font-weight: bold;
-  color: white;
+  color: rgb(130, 99, 208);
   margin-top: 20px;
   display: flex;
   align-items: center;
   padding-left: 36px;
-  font-size: 17px;
+  font-size: 18px;
   margin-right: 3vh;
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
 }
 #button-create-new-board:hover {
   background-color: rgb(95, 93, 92);
+}
+#button-switch {
+  position: absolute;
+  top: 85vh; /* Center vertically */
+  left: 3vh;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  width: 16%;
+  background-color: #252525ea;
+  align-items: center;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center; /* Add space between icons */
+}
+
+/* You can adjust the margin value as needed */
+#button-switch svg {
+  margin: 0 1rem; /* Add some horizontal spacing between icons */
 }

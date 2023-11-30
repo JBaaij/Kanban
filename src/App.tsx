@@ -11,8 +11,11 @@ import ViewAddNewBoard from "./ViewAddNewBoard";
 import { AppStateContext } from "./AppStateContext";
 import IconHideSidebar from "./assets/icon-hide-sidebar";
 import IconLogoLight from "./assets/logo-light";
-import ColorModeSwitch from "./ColorModeSwitch";
+import SwitchButton from "./ColorModeSwitch";
 import IconCircle from "./assets/circle";
+import LightTheme from "./assets/icon-light-theme";
+import DarkTheme from "./assets/icon-dark-theme";
+
 function App() {
   const [showLeftSidebar, setShowLeftSidebar] = useState(true);
   const [showCreatePanel, setShowCreatePanel] = useState(false);
@@ -22,7 +25,12 @@ function App() {
   const [countSubTask, setCountSubTask] = useState("");
   const [selectedBoardIndex, setSelectedBoardIndex] = useState<number>(0);
   const appState = useContext(AppStateContext);
+  const [isSwitchChecked, setIsSwitchChecked] = useState(false);
 
+  const handleSwitchChange = (checked: boolean) => {
+    // Update the state or perform any action when the switch is toggled
+    setIsSwitchChecked(checked);
+  };
   appState.setBoardLength(appState.dataState.boards.length);
   const toggleLeftSidebar = () => {
     setShowLeftSidebar(!showLeftSidebar);
@@ -90,7 +98,14 @@ function App() {
               +Create New Board
             </button>
           </div>
-
+          <div id="button-switch">
+            <LightTheme width={20} height={20} />
+            <SwitchButton
+              onChange={handleSwitchChange}
+              checked={isSwitchChecked}
+            />
+            <DarkTheme width={20} height={20} />
+          </div>
           <button onClick={toggleLeftSidebar} id="button-hide-sidebar">
             <IconHideSidebar /> &nbsp;&nbsp;&nbsp;Hide Sidebar
           </button>
