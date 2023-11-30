@@ -1,0 +1,21 @@
+// _base.scss
+
+// Define your colors or any other styles here
+$primary-color: #007bff;
+$secondary-color: #6c757d;
+
+@mixin wrapper {
+  // Your wrapper styles here
+}
+
+@mixin label {
+  // Your label styles here
+}
+
+@mixin before-after {
+  // Your before-after styles here
+}
+
+@mixin input-checkbox {
+  // Your input-checkbox styles here
+}

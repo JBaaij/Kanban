@@ -11,6 +11,7 @@ import ViewAddNewBoard from "./ViewAddNewBoard";
 import { AppStateContext } from "./AppStateContext";
 import IconHideSidebar from "./assets/icon-hide-sidebar";
 import IconLogoLight from "./assets/logo-light";
+import ColorModeSwitch from "./ColorModeSwitch";
 import IconCircle from "./assets/circle";
 function App() {
   const [showLeftSidebar, setShowLeftSidebar] = useState(true);
@@ -89,6 +90,7 @@ function App() {
               +Create New Board
             </button>
           </div>
+
           <button onClick={toggleLeftSidebar} id="button-hide-sidebar">
             <IconHideSidebar /> &nbsp;&nbsp;&nbsp;Hide Sidebar
           </button>
@@ -114,8 +116,8 @@ function App() {
           </div>
           {/* Middle container with 3 columns */}
           <div className="middle-container">
-            {/* 3 columns */}
             <div className="column">
+              {" "}
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TODO
             </div>
             <div className="column">
