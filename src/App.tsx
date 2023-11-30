@@ -9,7 +9,9 @@ import ViewAddNewTask from "./ViewAddNewTask";
 import ViewAmendPanel from "./ViewAmendPanel";
 import ViewAddNewBoard from "./ViewAddNewBoard";
 import { AppStateContext } from "./AppStateContext";
-
+import IconHideSidebar from "./assets/icon-hide-sidebar";
+import IconLogoLight from "./assets/logo-light";
+import IconCircle from "./assets/circle";
 function App() {
   const [showLeftSidebar, setShowLeftSidebar] = useState(true);
   const [showCreatePanel, setShowCreatePanel] = useState(false);
@@ -62,27 +64,33 @@ function App() {
       {showLeftSidebar && (
         <div className="left-sidebar">
           {/* Title and buttons */}
-          <div className="title">Kanban</div>
-          <div className="allboards">ALL BOARDS ({appState.boardLength})</div>
-          {appState.dataState.boards.map((board: any, index: number) => (
-            <LabelButton
-              key={index}
-              label={appState.dataState.boards[index].name}
-              onClick={() => {
-                handleBoardClick(index); // Pass the index directly
-                appState.setBoardName(appState.dataState.boards[index].name);
-                appState.setBoardNumber(index);
-              }}
-              isSelected={selectedBoardIndex === index}
-              index={index} // Pass the index prop
-            />
-          ))}
-          <button id="button-create-new-board" onClick={toggleNewBoardPanel}>
-            +Create New Board
-          </button>
+          <div className="title">
+            <IconLogoLight />
+          </div>
+          <div className="boardnames">
+            <div className="allboards">ALL BOARDS ({appState.boardLength})</div>
 
+            {appState.dataState.boards.map((board: any, index: number) => (
+              <LabelButton
+                key={index}
+                label={appState.dataState.boards[index].name}
+                onClick={() => {
+                  handleBoardClick(index); // Pass the index directly
+
+                  appState.setBoardName(appState.dataState.boards[index].name);
+                  appState.setBoardNumber(index);
+                }}
+                isSelected={selectedBoardIndex === index}
+                index={index} // Pass the index prop
+              />
+            ))}
+
+            <button id="button-create-new-board" onClick={toggleNewBoardPanel}>
+              +Create New Board
+            </button>
+          </div>
           <button onClick={toggleLeftSidebar} id="button-hide-sidebar">
-            Hide Sidebar
+            <IconHideSidebar /> &nbsp;&nbsp;&nbsp;Hide Sidebar
           </button>
         </div>
       )}
@@ -117,9 +125,7 @@ function App() {
             <div className="column">
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DONE
             </div>
-            <div className="right-sidebar">
-              <div></div>
-            </div>
+            <div className="right-sidebar"></div>
             {appState.dataState.boards[appState.boardNumber].columns.map(
               (column: any, columnIndex: number) => (
                 <div className="column" key={columnIndex}>

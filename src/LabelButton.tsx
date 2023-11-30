@@ -1,4 +1,6 @@
 import "./LabelButton.css";
+import IconBoard from "./assets/icon-board";
+import IconCircle from "./assets/circle";
 
 interface LabelButtonProps {
   label: string;
@@ -16,6 +18,8 @@ const LabelButton = (props: LabelButtonProps) => {
       }`}
       onClick={() => onClick()} // Pass the index as an argument
     >
+      <IconBoard fill="white" />
+      &nbsp;&nbsp;&nbsp;&nbsp;
       {label}
     </div>
   );
