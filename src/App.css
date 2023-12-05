@@ -1,57 +1,16 @@
-/* YourComponent.css */
-
-/* Container for the entire layout */
 .container {
   display: flex;
-  /* 100% viewport height */
-  position: relative; /* Create a positioning context */
+  position: relative;
+  min-width: 100vh;
 }
-
-/* Left sidebar */
-.left-sidebar {
-  min-width: 20%; /* 20% of the container's width */
-  background-color: #1f1c1ce3;
-
-  box-sizing: border-box;
-}
-
-/* Title */
-.title {
-  flex-grow: 1;
-  font-weight: bold;
-  margin-bottom: 0px;
-  color: white;
-  font-size: 32px;
-  padding: 2vh;
-  margin-left: 2vh;
-}
-
-.allboards {
-  color: lightgray;
-  font-weight: bold;
-  margin-top: 1vh;
-  margin-left: 4vh;
-  font-size: 15px;
-}
-/* Buttons */
-.boardnames {
-  margin-top: 2vh;
-}
-
-.buttons {
-  display: flex;
-  flex-direction: column;
-}
-
-/* Main content area (with or without left sidebar) */
 
 .main-content {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
 }
 
-/* Upper container */
 .upper-container {
   background-color: #1f1c1ce3;
   padding: 20px;
@@ -65,42 +24,9 @@
   color: white;
 }
 
-.middle-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 35px 1fr;
-  height: 100vh;
-}
-.middle-container > .column {
-  min-width: 340px; /* Adjust the minimum width as needed */
-  flex-grow: 1; /* Allow columns to grow to fill available space */
-}
-/* Individual columns within the middle container */
-.column {
-  background-color: #100f0fea; /* Example background color */
-  padding: 10px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  color: lightgrey;
-  font-size: 13px;
-  font-weight: bold;
-  /* Additional styling for the labels */
-}
-.right-sidebar {
-  background-color: #100f0fea; /* Example background color */
-  padding: 10px;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* Additional styling for the labels */
-}
-
-/* Optional: Style for the "Remove Left Sidebar" button */
 .container button {
   margin-top: 10px;
-  background-color: #a05eb6; /* Example button color */
+  background-color: #a05eb6;
   color: white;
   border: none;
   padding: 10px 15px;
@@ -108,10 +34,11 @@
   border-radius: 10px;
   font-weight: bold;
   font-size: 15px;
+  height: 40px;
 }
 
 .container button:hover {
-  background-color: #bf85c7; /* Example button color on hover */
+  background-color: #bf85c7;
 }
 #first-button-uppercontainer {
   background-color: rgb(130, 99, 208);
@@ -143,44 +70,6 @@
   top: 90vh;
 }
 #button-container {
-  display: flex; /* Create a nested flex container for buttons */
-  gap: 10px; /* Add some spacing between the buttons */
-}
-#button-create-new-board {
-  background-color: #3a3535e3;
-  user-select: none;
-  cursor: pointer;
-  height: 50px;
-  font-weight: bold;
-  color: rgb(130, 99, 208);
-  margin-top: 20px;
   display: flex;
-  align-items: center;
-  padding-left: 36px;
-  font-size: 18px;
-  margin-right: 3vh;
-  border-top-right-radius: 30px;
-  border-bottom-right-radius: 30px;
-}
-#button-create-new-board:hover {
-  background-color: rgb(95, 93, 92);
-}
-#button-switch {
-  position: absolute;
-  top: 85vh; /* Center vertically */
-  left: 3vh;
-  padding-top: 1vh;
-  padding-bottom: 1vh;
-  width: 16%;
-  background-color: #252525ea;
-  align-items: center;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center; /* Add space between icons */
-}
-
-/* You can adjust the margin value as needed */
-#button-switch svg {
-  margin: 0 1rem; /* Add some horizontal spacing between icons */
+  gap: 10px;
 }

@@ -1,0 +1,82 @@
+.left-sidebar {
+  min-width: 20%; /* 20% of the container's width */
+  background-color: #1f1c1ce3;
+
+  box-sizing: border-box;
+}
+
+/* Title */
+.title {
+  flex-grow: 1;
+  font-weight: bold;
+  margin-bottom: 0px;
+  color: white;
+  font-size: 32px;
+  padding: 2vh;
+  margin-left: 2vh;
+}
+
+.allboards {
+  color: lightgray;
+  font-weight: bold;
+  margin-top: 1vh;
+  margin-left: 4vh;
+  font-size: 15px;
+}
+/* Buttons */
+.boardnames {
+  margin-top: 2vh;
+}
+#button-hide-sidebar {
+  color: rgb(218, 207, 207);
+  font-size: 16px;
+  background-color: #3a3535e3;
+  margin-left: 2vh;
+  align-content: flex-start;
+  color: grey;
+  position: absolute;
+  top: 90vh;
+}
+#button-container {
+  display: flex; /* Create a nested flex container for buttons */
+  gap: 10px; /* Add some spacing between the buttons */
+}
+#button-create-new-board {
+  background-color: #3a3535e3;
+  user-select: none;
+  cursor: pointer;
+  height: 50px;
+  font-weight: bold;
+  color: rgb(130, 99, 208);
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  padding-left: 36px;
+  font-size: 18px;
+  margin-right: 3vh;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+#button-create-new-board:hover {
+  background-color: rgb(95, 93, 92);
+}
+
+#button-switch {
+  position: absolute;
+  top: 85vh; /* Center vertically */
+  left: 3vh;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  width: 16%;
+  background-color: #252525ea;
+  align-items: center;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center; /* Add space between icons */
+}
+
+/* You can adjust the margin value as needed */
+#button-switch svg {
+  margin: 0 1rem; /* Add some horizontal spacing between icons */
+}

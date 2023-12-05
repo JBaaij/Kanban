@@ -1,0 +1,31 @@
+.upper-container {
+  background-color: #1f1c1ce3;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  height: 10vh;
+  justify-content: space-between;
+  font-size: 28px;
+  font-weight: bold;
+  color: white;
+}
+#first-button-uppercontainer {
+  background-color: rgb(130, 99, 208);
+  color: white;
+  border-radius: 20px;
+  margin-right: 10px;
+}
+
+#button-uppercontainer {
+  background-color: rgb(130, 99, 208);
+  color: white;
+  border-radius: 20px;
+  margin-right: 10px;
+}
+#button-uppercontainer:hover {
+  background-color: rgb(149, 125, 208);
+}
+#first-button-uppercontainer:hover {
+  background-color: rgb(149, 125, 208);
+}
