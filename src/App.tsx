@@ -9,9 +9,10 @@ import { AppStateContext } from "./AppStateContext";
 import LeftSidebar from "./LeftSidebar";
 import TaskBoard from "./TaskBoard";
 import UpperContainer from "./UpperContainer";
-
+import ToggleBackSidebar from "./ToggleBackSidebar";
 function App() {
   const [showLeftSidebar, setShowLeftSidebar] = useState(true);
+  const [toggleBackLeftSidebar, setToggleBaclLeftSidebar] = useState(false);
   const [showCreatePanel, setShowCreatePanel] = useState(false);
   const [showTaskPanel, setShowTaskPanel] = useState(false);
   const [showAmendPanel, setShowAmendPanel] = useState(false);
@@ -26,6 +27,7 @@ function App() {
   appState.setBoardLength(appState.dataState.boards.length);
   const toggleLeftSidebar = () => {
     setShowLeftSidebar(!showLeftSidebar);
+    setToggleBaclLeftSidebar(!toggleBackLeftSidebar);
   };
   const toggleCreatePanel = () => {
     setShowCreatePanel(!showCreatePanel);
@@ -69,6 +71,9 @@ function App() {
           isSwitchChecked={isSwitchChecked}
         />
       )}
+      {toggleBackLeftSidebar && (
+        <ToggleBackSidebar onToggleLeftSidebar={toggleLeftSidebar} />
+      )}
       <div className="main-content">
         <UpperContainer
           onToggleCreate={toggleCreatePanel}
@@ -101,6 +106,7 @@ function App() {
             panelTitle="Adjust Task"
             description={appState.taskDescription}
             onDeleteTask={deleteTaskAndTogglePanel}
+            onDeleteBoard={deleteTaskAndTogglePanel}
           />
           <ViewAddNewBoard
             panelTitle="Create New Board"

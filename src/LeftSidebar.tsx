@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import "./LeftSidebar.css";
 import LightTheme from "./assets/icon-light-theme";
 import DarkTheme from "./assets/icon-dark-theme";
-import IconBoard from "./assets/icon-board";
 import IconHideSidebar from "./assets/icon-hide-sidebar";
 import LabelButton from "./LabelButton";
 import SwitchButton from "./ColorModeSwitch";

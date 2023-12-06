@@ -17,11 +17,15 @@ const ViewAddNewTask = (props: ViewAddNewTaskProps) => {
   const appState = useContext(AppStateContext);
 
   const addNewSubtask = () => {
-    const updatedSubtasks = [
-      ...appState.newSubtasks,
-      { title: "", isCompleted: false },
-    ];
-    appState.setNewSubtasks(updatedSubtasks);
+    const lastSubtask = appState.newSubtasks[appState.newSubtasks.length - 1];
+
+    if (!lastSubtask || lastSubtask.title.length >= 3) {
+      const updatedSubtasks = [
+        ...appState.newSubtasks,
+        { title: "", isCompleted: false },
+      ];
+      appState.setNewSubtasks(updatedSubtasks);
+    }
   };
 
   const updateNewSubtaskTitle = (index: number, title: string) => {
@@ -67,17 +71,11 @@ const ViewAddNewTask = (props: ViewAddNewTaskProps) => {
           break;
       }
 
-      console.log(`new taskstatus ${appState.newTaskStatus}`);
-      console.log(`columnIndex ${columnIndex}`);
-
       const board = appState.dataState.boards[appState.boardNumber];
-      console.log(`check 1 ${appState.boardNumber}`);
 
       appState.dataState.boards[appState.boardNumber].columns[
         columnIndex
       ].tasks.unshift(newTask);
-
-      console.log(appState.dataState);
 
       appState.setNewTaskTitle("");
       appState.setNewTaskDescription("");

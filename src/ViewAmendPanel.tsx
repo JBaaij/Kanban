@@ -9,14 +9,20 @@ interface ViewAmendPanelProps {
   onDeleteTask: () => void;
   subtasks?: { title: string; isCompleted: boolean }[];
   onSubtaskToggle?: (index: number) => void;
+  onDeleteBoard: () => void;
 }
 
 const ViewAmendPanel: React.FC<ViewAmendPanelProps> = (props) => {
-  const { panelTitle, description, className, subtasks, onSubtaskToggle } =
-    props;
+  const {
+    panelTitle,
+    description,
+    className,
+    subtasks,
+    onSubtaskToggle,
+    onDeleteBoard,
+  } = props;
   const appState = useContext(AppStateContext);
 
-  // Function to handle adding a new subtask
   const addNewSubtask = () => {
     const updatedSubtasks = [
       ...appState.newSubtasks,
@@ -24,8 +30,6 @@ const ViewAmendPanel: React.FC<ViewAmendPanelProps> = (props) => {
     ];
     appState.setNewSubtasks(updatedSubtasks);
   };
-
-  // Function to handle creating a new task
 
   const updateNewSubtaskTitle = (index: number, title: string) => {
     const updatedSubtasks = [...appState.newSubtasks];
@@ -39,7 +43,6 @@ const ViewAmendPanel: React.FC<ViewAmendPanelProps> = (props) => {
     appState.setNewSubtasks(updatedSubtasks);
   };
 
-  // Function to delete a task
   const deleteTask = () => {
     const { boardNumber, columnIndex, taskIndex } = appState;
 
@@ -48,11 +51,9 @@ const ViewAmendPanel: React.FC<ViewAmendPanelProps> = (props) => {
     const removedTask = currentColumn.splice(appState.taskIndex, 1)[0];
 
     const updatedDataStateCopy = { ...appState.dataState };
-    // Update dataState in the copy
     updatedDataStateCopy.boards[boardNumber].columns[columnIndex].tasks =
       currentColumn;
 
-    // Update dataState in the context
     appState.setDataState(updatedDataStateCopy);
     props.onDeleteTask();
   };
@@ -61,22 +62,30 @@ const ViewAmendPanel: React.FC<ViewAmendPanelProps> = (props) => {
       (_, index) => index !== subtaskIndex
     );
     appState.setSubtasks(updatedSubtasks);
-    console.log(updatedSubtasks);
-    console.log(appState.subtasks);
+  };
+  const deleteBoard = () => {
+    const currentBoardIndex = appState.boardNumber;
+    const updatedBoards = appState.dataState.boards.filter(
+      (_board: [], index: number) => index !== currentBoardIndex
+    );
+    appState.setDataState({ ...appState.dataState, boards: updatedBoards });
+
+    if (updatedBoards.length > 0) {
+      appState.setBoardName(updatedBoards[0].name);
+    } else {
+      appState.setBoardName("");
+      appState.setBoardNumber(-1);
+    }
+
+    appState.setTaskTitle("");
+    props.onDeleteBoard();
   };
 
-  useEffect(() => {
-    console.log("yoyiiyoyii"); // This code will run after the component re-renders
-    console.log(appState.subtasks);
-  }, [appState.subtasks]); // This watches for changes in appState.subtasks
+  useEffect(() => {}, [appState.subtasks, appState.boardLength]);
   const updateTask = () => {
-    // Create an updated task object with the new description and subtasks
     const updatedTask = {
       description: appState.newTaskDescription,
-      subtasks: [
-        ...appState.subtasks, // Add the old subtasks
-        ...appState.newSubtasks, // Add the new subtasks
-      ],
+      subtasks: [...appState.subtasks, ...appState.newSubtasks],
     };
 
     const taskToUpdate =
@@ -89,16 +98,13 @@ const ViewAmendPanel: React.FC<ViewAmendPanelProps> = (props) => {
 
       taskToUpdate.subtasks = updatedTask.subtasks;
 
-      // Now, update appState.dataState with the modified task
       const updatedDataStateCopy = { ...appState.dataState };
       updatedDataStateCopy.boards[appState.boardNumber].columns[
         appState.columnIndex
       ].tasks[appState.taskIndex] = taskToUpdate;
 
-      // Update dataState in the context
       appState.setDataState(updatedDataStateCopy);
 
-      // Call onDeleteTask if needed
       props.onDeleteTask();
     }
   };
@@ -131,7 +137,7 @@ const ViewAmendPanel: React.FC<ViewAmendPanelProps> = (props) => {
               checked={subtask.isCompleted}
               disabled // Disable the checkbox
             />
-            <span>{subtask.title}</span> {/* Render the title as text */}
+            <span>{subtask.title}</span>
             <button
               onClick={() => deleteSubTask(index)}
               id="button-delete-subtask"
@@ -162,14 +168,10 @@ const ViewAmendPanel: React.FC<ViewAmendPanelProps> = (props) => {
           Add New Subtask
         </button>
       </div>
-
-      {/* Status */}
       <div className="form-section">
         <div className="form-header">Status</div>
         <span className="status-text">{appState.taskStatus}</span>
       </div>
-
-      {/* Create Task Button */}
       <div className="form-section">
         <button onClick={updateTask} id="button-update-task">
           Update Task
@@ -178,6 +180,11 @@ const ViewAmendPanel: React.FC<ViewAmendPanelProps> = (props) => {
       <div className="form-section">
         <button onClick={deleteTask} id="button-delete-task">
           Delete Task
+        </button>
+      </div>
+      <div className="form-section">
+        <button onClick={deleteBoard} id="button-update-task">
+          Delete Board
         </button>
       </div>
     </div>

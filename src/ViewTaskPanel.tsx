@@ -17,9 +17,11 @@ const ViewTaskPanel = (props: ViewTaskPanelProps) => {
 
   const appState = useContext(AppStateContext);
 
-  useEffect(() => {
-    console.log("check 2");
+  console.log("joebadoebie");
+  console.log(appState.boardName);
+  console.log(appState.boardLength);
 
+  useEffect(() => {
     const { boardNumber, columnIndex, taskIndex } = appState;
 
     if (appState.columnIndex !== appState.newColumnIndex) {
@@ -39,18 +41,16 @@ const ViewTaskPanel = (props: ViewTaskPanelProps) => {
         appState.setTaskIndex(0);
 
         const updatedDataStateCopy = { ...appState.dataState };
-        // Update dataState in the copy
+
         updatedDataStateCopy.boards[boardNumber].columns[columnIndex].tasks =
           currentColumn;
         updatedDataStateCopy.boards[boardNumber].columns[
           appState.newColumnIndex
         ].tasks = targetColumnData.tasks;
 
-        // Update dataState in the context
         appState.setDataState(updatedDataStateCopy);
       }
     }
-    console.log(appState.dataState);
   }, [appState.newColumnIndex]);
 
   return (

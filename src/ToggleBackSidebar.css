@@ -1,0 +1,12 @@
+.toggle-back-sidebar {
+  font-size: 16px;
+  background-color: #333030e3;
+  margin-left: 2vh;
+  align-content: flex-start;
+  color: rgb(202, 194, 194);
+  cursor: pointer;
+  position: absolute;
+  top: 92vh;
+  font-weight: bold;
+  margin-left: 4vh;
+}
