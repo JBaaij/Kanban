@@ -8,11 +8,18 @@ interface ViewAddNewTaskProps {
   onCreateTask: () => void;
   subtasks?: { title: string; isCompleted: boolean }[];
   onSubtaskToggle?: (index: number) => void;
+  cancelToggle: () => void;
 }
 
 const ViewAddNewTask = (props: ViewAddNewTaskProps) => {
-  const { panelTitle, description, className, subtasks, onSubtaskToggle } =
-    props;
+  const {
+    panelTitle,
+    description,
+    className,
+    subtasks,
+    onSubtaskToggle,
+    cancelToggle,
+  } = props;
 
   const appState = useContext(AppStateContext);
 
@@ -147,6 +154,11 @@ const ViewAddNewTask = (props: ViewAddNewTaskProps) => {
       <div className="form-section">
         <button onClick={createNewTask} id="button-create-task">
           Create Task
+        </button>
+      </div>
+      <div className="form-section">
+        <button onClick={cancelToggle} id="goback-button">
+          Cancel
         </button>
       </div>
     </div>

@@ -10,6 +10,7 @@ interface ViewAmendPanelProps {
   subtasks?: { title: string; isCompleted: boolean }[];
   onSubtaskToggle?: (index: number) => void;
   onDeleteBoard: () => void;
+  cancelToggle: () => void;
 }
 
 const ViewAmendPanel: React.FC<ViewAmendPanelProps> = (props) => {
@@ -20,6 +21,7 @@ const ViewAmendPanel: React.FC<ViewAmendPanelProps> = (props) => {
     subtasks,
     onSubtaskToggle,
     onDeleteBoard,
+    cancelToggle,
   } = props;
   const appState = useContext(AppStateContext);
 
@@ -183,8 +185,13 @@ const ViewAmendPanel: React.FC<ViewAmendPanelProps> = (props) => {
         </button>
       </div>
       <div className="form-section">
-        <button onClick={deleteBoard} id="button-update-task">
+        <button onClick={deleteBoard} id="button-delete-board">
           Delete Board
+        </button>
+      </div>
+      <div className="form-section">
+        <button onClick={cancelToggle} id="goback-button">
+          Cancel
         </button>
       </div>
     </div>

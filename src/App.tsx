@@ -10,6 +10,7 @@ import LeftSidebar from "./LeftSidebar";
 import TaskBoard from "./TaskBoard";
 import UpperContainer from "./UpperContainer";
 import ToggleBackSidebar from "./ToggleBackSidebar";
+
 function App() {
   const [showLeftSidebar, setShowLeftSidebar] = useState(true);
   const [toggleBackLeftSidebar, setToggleBaclLeftSidebar] = useState(false);
@@ -87,6 +88,7 @@ function App() {
             title={appState.taskTitle}
             description={appState.taskDescription}
             count={countSubTask}
+            goBackToggle={toggleTaskPanel}
             subtasks={appState.subtasks}
             onSubtaskToggle={(subtaskIndex) => {
               const updatedSubtasks = [...appState.subtasks];
@@ -100,6 +102,7 @@ function App() {
             panelTitle="Add New Task"
             description={appState.taskDescription}
             onCreateTask={addTaskAndTogglePanel}
+            cancelToggle={toggleCreatePanel}
           />
           <ViewAmendPanel
             className={`amend-panel ${showAmendPanel ? "show" : ""}`}
@@ -107,11 +110,13 @@ function App() {
             description={appState.taskDescription}
             onDeleteTask={deleteTaskAndTogglePanel}
             onDeleteBoard={deleteTaskAndTogglePanel}
+            cancelToggle={toggleAmendPanel}
           />
           <ViewAddNewBoard
             panelTitle="Create New Board"
             className={`board-panel ${showNewBoardPanel ? "show" : ""}`}
             description={appState.taskDescription}
+            cancelToggle={toggleNewBoardPanel}
             onCreateBoard={() => {
               toggleNewBoardPanel();
             }}

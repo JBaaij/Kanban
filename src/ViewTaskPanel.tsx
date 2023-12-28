@@ -9,11 +9,19 @@ interface ViewTaskPanelProps {
   count?: string;
   subtasks?: { title: string; isCompleted: boolean }[];
   onSubtaskToggle?: (index: number) => void;
+  goBackToggle: () => void;
 }
 
 const ViewTaskPanel = (props: ViewTaskPanelProps) => {
-  const { title, description, className, count, subtasks, onSubtaskToggle } =
-    props;
+  const {
+    title,
+    description,
+    className,
+    count,
+    subtasks,
+    onSubtaskToggle,
+    goBackToggle,
+  } = props;
 
   const appState = useContext(AppStateContext);
 
@@ -102,6 +110,11 @@ const ViewTaskPanel = (props: ViewTaskPanelProps) => {
       </ul>
       <div style={{ fontWeight: "bold" }}>Status</div>
       <div>{appState.taskStatus}</div>
+      <span>
+        <button onClick={goBackToggle} id="goback-button">
+          Return
+        </button>
+      </span>
     </div>
   );
 };

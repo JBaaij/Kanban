@@ -88,3 +88,12 @@
 #button-create-task:hover {
   background-color: rgb(149, 125, 208);
 }
+#cancel-button {
+  color: rgb(130, 99, 208);
+  background-color: white;
+  width: 96%;
+  border-radius: 20px;
+}
+#cancel-button:hover {
+  background-color: rgb(238, 232, 232);
+}

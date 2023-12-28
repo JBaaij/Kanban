@@ -7,12 +7,13 @@ interface ViewAddNewBoardProps {
   description?: string;
   className?: string;
   onCreateBoard: () => void;
+  cancelToggle: () => void;
 }
 
 const ViewAddNewBoard = (props: ViewAddNewBoardProps) => {
   const appState = useContext(AppStateContext);
 
-  const { panelTitle, className } = props;
+  const { panelTitle, className, cancelToggle } = props;
   const [newBoardName, setNewBoardName] = useState(""); // State for input value
   const createNewBoard = (boardName: string) => {
     // Create a new board object
@@ -70,6 +71,9 @@ const ViewAddNewBoard = (props: ViewAddNewBoardProps) => {
         />
         <button type="submit" id="button-board-name">
           Submit Board Name
+        </button>
+        <button onClick={cancelToggle} id="goback-button">
+          Cancel
         </button>
       </form>
     </div>

@@ -40,3 +40,14 @@
   text-decoration: line-through;
   color: grey;
 }
+#goback-button {
+  color: rgb(251, 247, 247);
+  background-color: rgb(128, 121, 121);
+  width: 96%;
+  border-radius: 20px;
+  margin-top: 20px;
+}
+#goback-button:hover {
+  color: rgb(251, 247, 247);
+  background-color: rgb(149, 125, 208);
+}

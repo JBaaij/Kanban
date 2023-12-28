@@ -14,10 +14,11 @@
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 10vh;
-  left: 73vh;
-  width: 20%; /* Adjust the width as needed */
-
+  top: 40%;
+  left: 50%;
+  width: 20%;
+  min-width: 350px; /* Adjust the width as needed */
+  transform: translate(-50%, -50%);
   color: white;
   border-radius: 10px;
   padding: 35px;
@@ -97,4 +98,21 @@
 }
 #button-update-task:hover {
   background-color: rgb(149, 125, 208);
+}
+#button-delete-board {
+  background-color: rgb(130, 99, 208);
+  color: white;
+  width: 96%;
+  border-radius: 20px;
+}
+#button-delete-board:hover {
+  background: rgb(193, 108, 108);
+  color: black;
+}
+#goback-button {
+  color: rgb(251, 247, 247);
+  background-color: rgb(128, 121, 121);
+  width: 96%;
+  border-radius: 20px;
+  margin-top: 20px;
 }
