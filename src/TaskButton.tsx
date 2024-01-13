@@ -1,5 +1,6 @@
 import "./TaskButton.css";
-
+import React, { useContext } from "react";
+import { AppStateContext } from "./AppStateContext";
 interface TaskButtonProps {
   label: string;
   subTaskCount: string;
@@ -8,8 +9,16 @@ interface TaskButtonProps {
 }
 const TaskButton = (props: TaskButtonProps) => {
   const { label, subTaskCount, onClick, className } = props;
+  const appState = useContext(AppStateContext);
   return (
-    <div className={`task-button ${className || ""}`} onClick={onClick}>
+    <div
+      className={
+        appState.toggleDarkmode
+          ? `task-button-dark ${className || ""}`
+          : `task-button-light ${className || ""}`
+      }
+      onClick={onClick}
+    >
       <div>{label}</div>
       <div className="subtaskStyle">{subTaskCount}</div>
     </div>

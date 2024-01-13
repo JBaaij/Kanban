@@ -30,6 +30,8 @@ interface AppStateContext {
   setDataState: (data: any) => void;
   isCompleted: boolean;
   setIsCompleted: (value: boolean) => void;
+  toggleDarkmode: boolean;
+  setToggleDarkmode: (value: boolean) => void;
   // New state properties
   newTaskTitle: string;
   setNewTaskTitle: (title: string) => void;
@@ -70,6 +72,8 @@ const AppStateContext = createContext<AppStateContext>({
   setDataState: () => {},
   isCompleted: false,
   setIsCompleted: () => {},
+  toggleDarkmode: false,
+  setToggleDarkmode: () => {},
   // New state properties
   newTaskTitle: "",
   setNewTaskTitle: () => {},
@@ -105,6 +109,7 @@ const AppStateProvider: FC<{ children: ReactNode }> = ({ children }) => {
     { title: string; isCompleted: boolean }[]
   >([]);
   const [newTaskStatus, setNewTaskStatus] = useState("");
+  const [toggleDarkmode, setToggleDarkmode] = useState(false);
   return (
     <AppStateContext.Provider
       value={{
@@ -134,6 +139,8 @@ const AppStateProvider: FC<{ children: ReactNode }> = ({ children }) => {
         setDataState,
         isCompleted,
         setIsCompleted,
+        toggleDarkmode,
+        setToggleDarkmode,
         countSubTask,
         setCountSubTask,
         // New state properties and their update functions

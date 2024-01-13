@@ -1,8 +1,18 @@
-.middle-container {
+.middle-container-dark {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 35px 1fr;
   height: 100vh;
+  background-color: #100f0fea; /* Example background color */
+  color: white;
+}
+.middle-container-light {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 35px 1fr;
+  height: 100vh;
+  background-color: rgb(201, 216, 228); /* Example background color */
+  color: black;
 }
 .middle-container > .column {
   min-width: 340px; /* Adjust the minimum width as needed */
@@ -10,22 +20,54 @@
 }
 /* Individual columns within the middle container */
 .column {
-  background-color: #100f0fea; /* Example background color */
   padding: 10px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  color: lightgrey;
   font-size: 13px;
   font-weight: bold;
   /* Additional styling for the labels */
 }
 .right-sidebar {
-  background-color: #100f0fea; /* Example background color */
   padding: 10px;
   box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
   /* Additional styling for the labels */
+}
+.task-button-dark {
+  user-select: none;
+  cursor: pointer;
+  display: inline-block;
+
+  border-radius: 10px;
+  background-color: #5c585848;
+  color: white;
+  font-weight: bold;
+  padding: 15px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+}
+.task-button-light {
+  user-select: none;
+  cursor: pointer;
+  display: inline-block;
+
+  border-radius: 10px;
+  background-color: white;
+  color: black;
+  font-weight: bold;
+  padding: 15px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+}
+
+.subtaskStyle {
+  font-size: 13px;
+  color: rgb(130, 123, 123);
+  margin-top: 5px;
+}
+.task-button:hover {
+  background-color: #7b747448;
 }

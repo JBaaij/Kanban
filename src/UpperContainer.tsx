@@ -14,7 +14,13 @@ const UpperContainer = ({
   const appState = useContext(AppStateContext);
 
   return (
-    <div className="upper-container">
+    <div
+      className={
+        appState.toggleDarkmode
+          ? "upper-container-dark"
+          : "upper-container-light"
+      }
+    >
       <span>{appState.boardName}</span>
       <div id="button-container">
         <button onClick={onToggleCreate} id="first-button-uppercontainer">

@@ -25,10 +25,6 @@ const ViewTaskPanel = (props: ViewTaskPanelProps) => {
 
   const appState = useContext(AppStateContext);
 
-  console.log("joebadoebie");
-  console.log(appState.boardName);
-  console.log(appState.boardLength);
-
   useEffect(() => {
     const { boardNumber, columnIndex, taskIndex } = appState;
 

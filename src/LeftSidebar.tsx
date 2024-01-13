@@ -6,6 +6,7 @@ import IconHideSidebar from "./assets/icon-hide-sidebar";
 import LabelButton from "./LabelButton";
 import SwitchButton from "./ColorModeSwitch";
 import IconLogoLight from "./assets/logo-light";
+import IconLogoDark from "./assets/logo-dark";
 import { AppStateContext } from "./AppStateContext";
 
 interface LeftSidebarProps {
@@ -30,13 +31,17 @@ const LeftSidebar = (props: LeftSidebarProps) => {
   const appState = useContext(AppStateContext);
 
   return (
-    <div className="left-sidebar">
+    <div
+      className={isSwitchChecked ? "left-sidebar-dark" : "left-sidebar-light"}
+    >
       {/* Title and buttons */}
       <div className="title">
-        <IconLogoLight />
+        {isSwitchChecked ? <IconLogoLight /> : <IconLogoDark />}
       </div>
       <div className="boardnames">
-        <div className="allboards">ALL BOARDS ({appState.boardLength})</div>
+        <div className={isSwitchChecked ? "allboards-dark" : "allboards-light"}>
+          ALL BOARDS ({appState.boardLength})
+        </div>
 
         {appState.dataState.boards.map((board: any, index: number) => (
           <LabelButton
@@ -56,7 +61,7 @@ const LeftSidebar = (props: LeftSidebarProps) => {
           className="button-create-new-board"
         />
       </div>
-      <div id="button-switch">
+      <div id={isSwitchChecked ? "button-switch-dark" : "button-switch-light"}>
         <LightTheme width={20} height={20} />
         <SwitchButton
           onChange={onHandleSwitchChange}
@@ -64,7 +69,14 @@ const LeftSidebar = (props: LeftSidebarProps) => {
         />
         <DarkTheme width={20} height={20} />
       </div>
-      <button onClick={onToggleLeftSidebar} id="button-hide-sidebar">
+      <button
+        onClick={onToggleLeftSidebar}
+        id={
+          isSwitchChecked
+            ? "button-hide-sidebar-dark"
+            : "button-hide-sidebar-light"
+        }
+      >
         <IconHideSidebar /> &nbsp;&nbsp;&nbsp;Hide Sidebar
       </button>
     </div>

@@ -18,7 +18,7 @@ const LabelButton = (props: LabelButtonProps) => {
       }`}
       onClick={() => onClick()} // Pass the index as an argument
     >
-      <IconBoard fill="white" />
+      <IconBoard fill="grey" />
       &nbsp;&nbsp;&nbsp;&nbsp;
       {label}
     </div>

@@ -24,7 +24,10 @@ function App() {
   const [isSwitchChecked, setIsSwitchChecked] = useState(false);
   const handleSwitchChange = (checked: boolean) => {
     setIsSwitchChecked(checked);
+    appState.setToggleDarkmode(!appState.toggleDarkmode);
+    console.log(` yoyoyo ${appState.toggleDarkmode}`);
   };
+  console.log(isSwitchChecked);
   appState.setBoardLength(appState.dataState.boards.length);
   const toggleLeftSidebar = () => {
     setShowLeftSidebar(!showLeftSidebar);

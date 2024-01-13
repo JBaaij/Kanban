@@ -1,10 +1,76 @@
-.left-sidebar {
-  min-width: 20%; /* 20% of the container's width */
-  background-color: #1f1c1ce3;
+.label-button {
+  user-select: none;
+  cursor: pointer;
+  height: 50px;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  font-weight: bold;
 
-  box-sizing: border-box;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  padding-left: 36px;
+  font-size: 17px;
+  margin-right: 3vh;
+}
+.label-button:hover {
+  background-color: rgb(149, 125, 208);
+}
+.selected:hover {
+  background-color: rgb(130, 99, 208);
+}
+.selected {
+  user-select: none;
+  cursor: pointer;
+  height: 50px;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  background-color: rgb(130, 99, 208);
+  font-weight: bold;
+  color: white;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  padding-left: 36px;
+  font-size: 17px;
+  margin-right: 3vh;
+}
+.button-create-new-board {
+  user-select: none;
+  cursor: pointer;
+  height: 50px;
+  font-weight: bold;
+  color: rgb(130, 99, 208);
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  padding-left: 36px;
+  font-size: 18px;
+  margin-right: 3vh;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+.button-create-new-board:hover {
+  background-color: rgb(149, 125, 208);
+  color: black;
+}
+/* Targeting SVG inside the button */
+.button-create-new-board svg {
+  fill: #8263d0; /* Default fill color */
 }
 
+.left-sidebar-dark {
+  min-width: 20%; /* 20% of the container's width */
+  background-color: #1f1c1ce3;
+  color: white;
+  box-sizing: border-box;
+}
+.left-sidebar-light {
+  min-width: 20%; /* 20% of the container's width */
+  background-color: white;
+  color: black;
+  box-sizing: border-box;
+}
 /* Title */
 .title {
   flex-grow: 1;
@@ -16,24 +82,40 @@
   margin-left: 2vh;
 }
 
-.allboards {
+.allboards-dark {
   color: lightgray;
   font-weight: bold;
   margin-top: 1vh;
   margin-left: 4vh;
   font-size: 15px;
 }
+.allboards-light {
+  color: rgb(68, 64, 64);
+  font-weight: bold;
+  margin-top: 1vh;
+  margin-left: 4vh;
+  font-size: 15px;
+}
+
 /* Buttons */
 .boardnames {
   margin-top: 2vh;
 }
-#button-hide-sidebar {
-  color: rgb(218, 207, 207);
+#button-hide-sidebar-dark {
   font-size: 16px;
   background-color: #3a3535e3;
   margin-left: 2vh;
   align-content: flex-start;
   color: grey;
+  position: absolute;
+  top: 90vh;
+}
+#button-hide-sidebar-light {
+  font-size: 16px;
+  background-color: white;
+  margin-left: 2vh;
+  align-content: flex-start;
+  color: rgb(102, 94, 94);
   position: absolute;
   top: 90vh;
 }
@@ -61,7 +143,7 @@
   background-color: rgb(95, 93, 92);
 }
 
-#button-switch {
+#button-switch-dark {
   position: absolute;
   top: 85vh; /* Center vertically */
   left: 3vh;
@@ -75,7 +157,20 @@
   flex-direction: row;
   justify-content: center; /* Add space between icons */
 }
-
+#button-switch-light {
+  position: absolute;
+  top: 85vh; /* Center vertically */
+  left: 3vh;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  width: 16%;
+  background-color: rgb(201, 216, 228);
+  align-items: center;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center; /* Add space between icons */
+}
 /* You can adjust the margin value as needed */
 #button-switch svg {
   margin: 0 1rem; /* Add some horizontal spacing between icons */

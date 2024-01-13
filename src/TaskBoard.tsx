@@ -11,7 +11,13 @@ const TaskBoard = ({ onToggleTaskPanel }: TaskBoardProps) => {
   const appState = useContext(AppStateContext);
 
   return (
-    <div className="middle-container">
+    <div
+      className={
+        appState.toggleDarkmode
+          ? "middle-container-dark"
+          : "middle-container-light"
+      }
+    >
       <div className="column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TODO</div>
       <div className="column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DOING</div>
       <div className="column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DONE</div>
