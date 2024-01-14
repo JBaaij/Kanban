@@ -10,6 +10,9 @@
   font-weight: bold;
   color: #ffffff;
 }
+#background-menu-dark {
+  background-color: #3f3939e3;
+}
 .upper-container-light {
   background-color: white;
   padding: 20px;

@@ -65,23 +65,6 @@ const ViewAmendPanel: React.FC<ViewAmendPanelProps> = (props) => {
     );
     appState.setSubtasks(updatedSubtasks);
   };
-  const deleteBoard = () => {
-    const currentBoardIndex = appState.boardNumber;
-    const updatedBoards = appState.dataState.boards.filter(
-      (_board: [], index: number) => index !== currentBoardIndex
-    );
-    appState.setDataState({ ...appState.dataState, boards: updatedBoards });
-
-    if (updatedBoards.length > 0) {
-      appState.setBoardName(updatedBoards[0].name);
-    } else {
-      appState.setBoardName("");
-      appState.setBoardNumber(-1);
-    }
-
-    appState.setTaskTitle("");
-    props.onDeleteBoard();
-  };
 
   useEffect(() => {}, [appState.subtasks, appState.boardLength]);
   const updateTask = () => {
@@ -184,11 +167,7 @@ const ViewAmendPanel: React.FC<ViewAmendPanelProps> = (props) => {
           Delete Task
         </button>
       </div>
-      <div className="form-section">
-        <button onClick={deleteBoard} id="button-delete-board">
-          Delete Board
-        </button>
-      </div>
+
       <div className="form-section">
         <button onClick={cancelToggle} id="goback-button">
           Cancel
