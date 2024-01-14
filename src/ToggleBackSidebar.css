@@ -1,9 +1,21 @@
-.toggle-back-sidebar {
+.toggle-back-sidebar-dark {
   font-size: 16px;
   background-color: #333030e3;
   margin-left: 2vh;
   align-content: flex-start;
   color: rgb(202, 194, 194);
+  cursor: pointer;
+  position: absolute;
+  top: 92vh;
+  font-weight: bold;
+  margin-left: 4vh;
+}
+.toggle-back-sidebar-light {
+  font-size: 16px;
+  background-color: rgb(201, 216, 228);
+  margin-left: 2vh;
+  align-content: flex-start;
+  color: rgb(94, 89, 89);
   cursor: pointer;
   position: absolute;
   top: 92vh;

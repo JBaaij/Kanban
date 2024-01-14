@@ -102,6 +102,7 @@ const ViewAddNewTask = (props: ViewAddNewTaskProps) => {
           value={appState.newTaskTitle}
           onChange={(e) => appState.setNewTaskTitle(e.target.value)}
           className="input-box"
+          id={appState.toggleDarkmode ? "darkbackground" : "lightbackground"}
         />
       </div>
       {/* Description */}
@@ -111,6 +112,7 @@ const ViewAddNewTask = (props: ViewAddNewTaskProps) => {
           value={appState.newTaskDescription}
           onChange={(e) => appState.setNewTaskDescription(e.target.value)}
           className="description-box"
+          id={appState.toggleDarkmode ? "darkbackground" : "lightbackground"}
         />
       </div>
       {/* Subtasks */}
@@ -123,6 +125,9 @@ const ViewAddNewTask = (props: ViewAddNewTaskProps) => {
               value={subtask.title}
               onChange={(e) => updateNewSubtaskTitle(index, e.target.value)}
               className="subtask-box"
+              id={
+                appState.toggleDarkmode ? "darkbackground" : "lightbackground"
+              }
             />
             <input
               type="checkbox"
@@ -143,6 +148,7 @@ const ViewAddNewTask = (props: ViewAddNewTaskProps) => {
           value={appState.newTaskStatus}
           onChange={(e) => appState.setNewTaskStatus(e.target.value)}
           className="status-box"
+          id={appState.toggleDarkmode ? "darkbackground" : "lightbackground"}
         >
           <option value="Todo">Todo</option>
           <option value="Doing">Doing</option>

@@ -68,6 +68,9 @@
   color: rgb(130, 123, 123);
   margin-top: 5px;
 }
-.task-button:hover {
+.task-button-dark:hover {
   background-color: #7b747448;
+}
+.task-button-light:hover {
+  background-color: rgb(229, 237, 243);
 }

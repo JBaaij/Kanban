@@ -87,7 +87,11 @@ function App() {
         <div className={`create-panel ${showCreatePanel ? "show" : ""}`}></div>
         <div>
           <ViewTaskPanel
-            className={`view-task-panel ${showTaskPanel ? "show" : ""}`}
+            className={`${
+              appState.toggleDarkmode
+                ? "view-task-panel-dark"
+                : "view-task-panel-light"
+            } ${showTaskPanel ? "show" : ""}`}
             title={appState.taskTitle}
             description={appState.taskDescription}
             count={countSubTask}
@@ -101,14 +105,21 @@ function App() {
             }}
           />
           <ViewAddNewTask
-            className={`create-panel ${showCreatePanel ? "show" : ""}`}
+            className={`${
+              appState.toggleDarkmode
+                ? "create-panel-dark"
+                : "create-panel-light"
+            } 
+              ${showCreatePanel ? "show" : ""}`}
             panelTitle="Add New Task"
             description={appState.taskDescription}
             onCreateTask={addTaskAndTogglePanel}
             cancelToggle={toggleCreatePanel}
           />
           <ViewAmendPanel
-            className={`amend-panel ${showAmendPanel ? "show" : ""}`}
+            className={`${
+              appState.toggleDarkmode ? "amend-panel-dark" : "amend-panel-light"
+            } ${showAmendPanel ? "show" : ""}`}
             panelTitle="Adjust Task"
             description={appState.taskDescription}
             onDeleteTask={deleteTaskAndTogglePanel}
@@ -117,7 +128,9 @@ function App() {
           />
           <ViewAddNewBoard
             panelTitle="Create New Board"
-            className={`board-panel ${showNewBoardPanel ? "show" : ""}`}
+            className={`${
+              appState.toggleDarkmode ? "board-panel-dark" : "board-panel-light"
+            } ${showNewBoardPanel ? "show" : ""}`}
             description={appState.taskDescription}
             cancelToggle={toggleNewBoardPanel}
             onCreateBoard={() => {

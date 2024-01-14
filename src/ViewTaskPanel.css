@@ -1,8 +1,12 @@
-.view-task-panel {
+.view-task-panel-dark {
   display: none;
   position: absolute;
 }
-.view-task-panel.show {
+.view-task-panel-light {
+  display: none;
+  position: absolute;
+}
+.view-task-panel-dark.show {
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -16,6 +20,21 @@
   background-color: rgb(71, 69, 69);
   z-index: 1; /* Make the panel appear in front of other elements */
 }
+.view-task-panel-light.show {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 20vh;
+  left: 73vh;
+  width: 20%; /* Adjust the width as needed */
+
+  color: white;
+  border-radius: 10px;
+  padding: 35px;
+  background-color: rgb(172, 186, 199);
+  z-index: 1; /* Make the panel appear in front of other elements */
+}
+
 .titleStyle {
   font-size: 20px;
   font-weight: bold;
@@ -23,14 +42,13 @@
 }
 .descriptionStyle {
   font-size: 13px;
-  color: lightgray;
+  color: white;
   margin-bottom: 30px;
 }
 .countStyle {
   font-weight: bold;
 }
 .checkboxStyle {
-  background-color: rgb(44, 44, 44);
   border-radius: 5px;
   padding-top: 5px;
   padding-bottom: 5px;

@@ -1,8 +1,12 @@
-.board-panel {
+.board-panel-dark {
   display: none;
   position: absolute;
 }
-.board-panel.show {
+.board-panel-light {
+  display: none;
+  position: absolute;
+}
+.board-panel-dark.show {
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -16,6 +20,20 @@
   background-color: rgb(71, 69, 69);
   z-index: 1;
 }
+.board-panel-light.show {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 25vh;
+  left: 78vh;
+  width: 15%; /* Adjust the width as needed */
+
+  color: white;
+  border-radius: 10px;
+  padding: 35px;
+  background-color: rgb(172, 186, 199);
+  z-index: 1;
+}
 .titleStyle {
   font-size: 20px;
   font-weight: bold;
@@ -27,12 +45,12 @@
   color: white;
   width: 96%;
   border-radius: 20px;
+  margin-top: 20px;
 }
 #button-board-name:hover {
   background-color: rgb(149, 125, 208);
 }
 .input-box-name {
-  background-color: rgb(42, 40, 40);
   color: white;
   font-weight: bold;
   width: 98%;

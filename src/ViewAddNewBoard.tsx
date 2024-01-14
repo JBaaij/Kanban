@@ -68,6 +68,7 @@ const ViewAddNewBoard = (props: ViewAddNewBoardProps) => {
           value={newBoardName}
           onChange={(e) => setNewBoardName(e.target.value)}
           className="input-box-name"
+          id={appState.toggleDarkmode ? "darkbackground" : "lightbackground"}
         />
         <button type="submit" id="button-board-name">
           Submit Board Name

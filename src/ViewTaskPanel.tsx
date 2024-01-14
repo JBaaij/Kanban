@@ -60,10 +60,16 @@ const ViewTaskPanel = (props: ViewTaskPanelProps) => {
   return (
     <div className={`${className || ""}`}>
       <div className="titleStyle">{title}</div>
-      <div className="descriptionStyle">{description}</div>
+      <div className="descriptionStyle" style={{ color: "white" }}>
+        {description}
+      </div>
+
       <div className="countStyle">{count}</div>
 
-      <ul className="checkboxStyle">
+      <ul
+        className="checkboxStyle"
+        id={appState.toggleDarkmode ? "darkbackground" : "lightbackground"}
+      >
         {subtasks &&
           subtasks.map((subtask, index) => (
             <li
