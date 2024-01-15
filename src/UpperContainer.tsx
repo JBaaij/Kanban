@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useEffect, useState, useContext, useRef } from "react";
 import "./UpperContainer.css";
 import { AppStateContext } from "./AppStateContext";
 import IconMenu from "./assets/icon-vertical-ellipsis";
@@ -18,12 +18,39 @@ const UpperContainer = ({
   const [showDropdownMenu, setShowDropdownMenu] = useState(false);
 
   const toggleDropdownMenu = () => {
-    setShowDropdownMenu(!showDropdownMenu);
+    setShowDropdownMenu((prevShowDropdownMenu) => !prevShowDropdownMenu);
   };
 
   const closeDropdownMenu = () => {
     setShowDropdownMenu(false);
   };
+  useEffect(() => {
+    console.log("jabba");
+    const handleMouseDownOutside = (event: MouseEvent) => {
+      const dropdownMenu = document.querySelector(".dropdown-menu");
+
+      if (
+        dropdownMenu &&
+        !dropdownMenu.contains(event.target as Node) &&
+        !(event.target as HTMLElement).classList.contains("test-button")
+      ) {
+        closeDropdownMenu();
+      }
+    };
+
+    // Attach the event listener when the dropdown should be shown
+    if (showDropdownMenu) {
+      document.addEventListener("mousedown", handleMouseDownOutside);
+    } else {
+      // Remove the event listener when the dropdown should be hidden
+      document.removeEventListener("mousedown", handleMouseDownOutside);
+    }
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      document.removeEventListener("mousedown", handleMouseDownOutside);
+    };
+  }, [showDropdownMenu]);
 
   const menuOptions = [
     {
@@ -140,6 +167,7 @@ const UpperContainer = ({
           id={
             appState.toggleDarkmode ? "background-menu-dark" : "lightbackground"
           }
+          className="test-button"
         >
           <IconMenu />
         </button>
